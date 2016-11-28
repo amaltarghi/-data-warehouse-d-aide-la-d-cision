@@ -1,0 +1,290 @@
+package routines;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.Locale;
+
+
+
+public class Corriger {
+	
+	
+	public static String etranger (String nationalite) {
+	
+	if( !nationalite.equals("Marocaine"))
+		return "Autre";
+	return nationalite; }
+	public static String natio (String nationalite) {
+		
+		if( !nationalite.equals("Etranger"))
+			return "Autre";
+		return nationalite; }
+	
+	public static String mension (Float note)
+	
+	{
+		
+		if (note >= 10 && note <12 )
+			
+			return " passable ";
+		
+		if (note >= 12 && note <14 )
+			
+			return " assez bien ";
+		
+		if (note >= 14 && note <16)
+			
+			return " bien ";
+		
+		if (note >= 16 && note <18)
+			
+			return " très bien ";
+		
+		if (note >= 18)
+			
+			return " Excellent ";
+		
+		
+		return " rien";
+		
+	}
+	public static String nbreanne294 (String nbre) { 
+		if (nbre.equals("2")  || nbre.equals("0")  )
+		return "3 ";
+		return nbre ;
+	
+	}
+	
+	public static String nationa ( String natio) {
+		
+		if (natio.equals("Mauritanienne"))
+			
+			return "Autre";
+		return natio;
+	
+	}
+	public static String corrigerID294anneedeug(String id ,String  anne) {
+if( id.equals("294"  )  && anne.equals("2012.0"))
+	return "2012";
+if( id.equals("669"  )  && anne.equals("2012.0"))
+	return "2014";
+
+if( id.equals("2850"  )  && anne.equals("2015.0") )
+	return "2014";
+if( id.equals("143"  )  && anne.equals("2012.0") )
+	return "2011";
+if( id.equals("7343"  )  && anne.equals("2015.0") )
+	return "2014";
+
+
+
+return anne; }
+//	
+	public static String corrigerID294bac1(String id ,String  anne) {
+		if( id.equals("1451"  )  && anne.equals("2013.0"))
+			return "2014";
+		if( id.equals("669"  )  && anne.equals("2012.0"))
+			return "2013";
+		if( id.equals("294"  )  && anne.equals("2012.0"))
+			return "2011";
+		if( id.equals("2850"  )  && anne.equals("2014.0") )
+			return "2013";
+		if( id.equals("143"  )  && anne.equals("2012.0") )
+			return "2010";
+		if( id.equals("7343"  )  && anne.equals("2014.0") )
+			return "2011";
+
+		
+
+		return anne; }
+	public static String corrigerID294licence(String id ,String  anne) {
+		if( id.equals("294"  )  && anne.equals("2012") )
+			return "2013";
+		if( id.equals("669"  )  && anne.equals("2012") )
+			return "2015";
+		if( id.equals("6012"  )  && anne.equals("2014") )
+			return "2015";
+	
+		
+		return anne; }
+	
+	public static String corrigerlieuNaiss (String lieu) {
+		if (lieu== null)
+		return null;
+		
+if (lieu.contains("TEVRAGH-ZEINA") || lieu.contains("Maurita") || lieu.contains("NOUAKCHOTT") || lieu.contains("Lycée Nationale"))
+return "Autre";
+		if (lieu.contains("10/Avril/Année"))
+			return "01/04/94";
+		
+		if (lieu.contains("EDUCATION ET DE FORMATION"))
+			return "fes";
+		
+	
+		if (lieu.contains("QSD") || (lieu.contains ("1992-09-17" ) ))
+		return "fes";
+
+		if (lieu.contains("08/06/1991"))
+				return "SALE";
+		
+		if (lieu.contains("Jour/Juillet/1992"))
+			return "01/07/92";
+	
+		if (lieu.contains("13/AOUT/1992"))
+			return "13/08/92";
+		if (lieu.contains("	Louis Grégory"))
+			return "Tanger";
+		
+		
+	
+		String lieuu = lieu.toUpperCase();
+		if (lieuu.contains("ORIENTAL OUJDA") || lieuu.contains(("REGIONALE")) )
+			return "l'oriental";	
+
+		if ( lieuu.contains("FORMATION"))
+			return "casablanca";
+	
+		if ( lieuu.contains("LARACHE"))
+			return "TETOUAN";
+		if (lieuu.contains("FEMININ"))
+		return "non" ;
+		if (lieuu.contains("BOURSIER"))
+			return "OUI" ;
+		if ( lieuu.contains("NOUAKCHOTT"))
+			return ( "Autre");
+		if ( lieuu.contains("TEVRAGH"))
+			return "Autre";
+		if ( lieuu.contains("NATIONALE"))
+			return "Autre";
+		if ( lieuu.contains("TUNISIE") )
+			return "Autre";
+		
+	
+	
+		
+		return lieu.toUpperCase();
+		
+		
+		
+	}
+
+public static String corrigerEtabLicence (String etablissementLicence) {
+	if (etablissementLicence== null)
+	return null;
+	
+	String etabLicenceAutre = etablissementLicence.toUpperCase();
+		
+	if (etabLicenceAutre.contains("AUCUNE"))
+			return "Faculté des sciences et techniques";
+	if (etabLicenceAutre.contains("AGADIR") || etabLicenceAutre.contains("FÈS")  || etabLicenceAutre.contains("SCIENCES RABAT")|| etabLicenceAutre.contains("BNNBBN") ||etabLicenceAutre.contains("DHAR  MAHRAZ")) 
+		return "Faculté des sciences ";
+
+
+	if (etabLicenceAutre.contains("ECOLE NATIONALE SUPÉRIEURE"))
+		return "Ecole Normale Supérieure";
+if (etabLicenceAutre.contains("AGADIR")  || etabLicenceAutre.contains("FÈS")  || etabLicenceAutre.contains("SCIENCES RABAT")|| etabLicenceAutre.contains("BNNBBN") ||etabLicenceAutre.contains("DHAR  MAHRAZ")) 
+	return "Faculté des sciences ";
+	
+	if (etabLicenceAutre.contains("JURIDQUE")
+			|| etabLicenceAutre.contains("fsjes") ||  etabLicenceAutre.contains("JURIDIQUES") )
+		
+		return "Faculté des sciences juridiques économiques et sociales";
+	return etabLicenceAutre.toUpperCase();
+	
+	
+	
+	
+}
+public static String corrigerDeug (String etablissementDeug) {
+//	if (etablissementDeug.contains("Ibn Sina") )
+//	return "Faculté des sciences" ;
+//			
+	if (etablissementDeug== null)  
+		return null;
+if ( etablissementDeug.contains("Institut Supérieur de Technologie Appliquée") || etablissementDeug.contains("Institut specialisé de technologie appliqu") || etablissementDeug.contains("Institut spécialisé de technologies appliquées") || etablissementDeug.contains("ISTA") || etablissementDeug.contains("INSTITUT SPÉCIALISÉ DE TECHNOLOGIE APPLIQUÉE"))
+	return "OFPPT";
+if (etablissementDeug.contains("Faculté des sciences juridiques économiques et sociales")
+		|| etablissementDeug.contains("fsjes") ||  etablissementDeug.contains("JURIDIQUES") )
+	
+	return "Faculté des sciences juridiques économiques et sociales";
+if (etablissementDeug.contains("CRMEF") )
+	
+	return ( "Ecole Normale Supérieure");
+if (etablissementDeug.contains("ÉCOLE NORMALE SUPERIEURE"))
+	
+	return ( "Ecole Normale Supérieure");
+	
+	String etabDeugAutre = etablissementDeug.toUpperCase();
+	if (etablissementDeug.contains("al khawarizmi" ))
+		return "Brevet Technicien Superieur BTS";
+	if (  etabDeugAutre.contains("LYC"))
+		return "Brevet Technicien Superieur BTS";
+
+	
+	
+	if (etabDeugAutre.contains("AGADIR") || (etabDeugAutre.contains("FÈS")  || etabDeugAutre.contains("FACULTÉ DES SCIENCES RABAT") || etabDeugAutre.contains("FACULTÉ DES SCIENCES OUJDA") || etabDeugAutre.contains("FACULTÉ DE SCIENCES")||  etabDeugAutre.contains("IBN SINA")|| etabDeugAutre.contains("FACULTE DE SCIENCE")))
+		return "Faculté des sciences ";
+	if (etabDeugAutre.contains("FACULTÉ PLURIDISCIPLINAIRE"))
+		return " Faculté polydisciplinaire" ;
+	if (etablissementDeug.contains("FSTE") || etablissementDeug.contains("2013"))
+		return "Faculté des sciences et techniques";
+	if (etablissementDeug.contains("CRMEF") || etablissementDeug.contains("ÉCOLE NORMALE SUPERIEURE") || etabDeugAutre.contains("NORMALE SUPÉRIEURE DE TÉTOUAN-MARTI"))
+		
+		return ( "Ecole Normale Supérieure");
+	
+	return etabDeugAutre.toUpperCase();
+}
+public static Date fixe_ddn(String dateNaissance) {
+	Locale l = new Locale("fr");
+
+	List<SimpleDateFormat> knownPatterns = new ArrayList<SimpleDateFormat>();
+
+	knownPatterns.add(new SimpleDateFormat("dd/MMMM/yyyy", l));
+	knownPatterns.add(new SimpleDateFormat("d/MMMM/yyyy", l));
+	knownPatterns.add(new SimpleDateFormat("d/mm/yyyy", l));
+	knownPatterns.add(new SimpleDateFormat("dd/mm/yyyy", l));
+	knownPatterns.add(new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy"));
+	knownPatterns.add(new SimpleDateFormat("yyyy-mm-dd HH:mm:ss"));
+
+	for (SimpleDateFormat pattern : knownPatterns) {
+		try {
+			Date d = new Date(pattern.parse(dateNaissance).getTime());
+			return d;
+
+		} catch (ParseException pe) {
+		}
+	}
+
+	return null;
+}
+
+
+		
+public static	float moyenne4 (String s){
+	
+	
+float  m = Float.parseFloat(s); 
+
+
+
+			if (m >=40 &&  m<=100)
+				return m/4;
+			
+
+
+
+
+			if (m >=0 &&  m<=20)
+				return m;
+
+			else
+		
+		return 99 ;
+
+
+}}
+
+

@@ -1,0 +1,387 @@
+package routines;
+
+import java.util.*;
+import java.text.Normalizer;
+public class IntRoutine {
+	
+//
+//	public static String getModuleName(String module){
+//	String nom=	Normalizer
+//        .normalize(module, Normalizer.Form.NFD) ;
+//	if(nom.contains("ALGEBRE"))
+//		return "MATH";
+//	if(nom.contains("ALGEBRE") || nom.contains("ANALYSE"))
+//		return "MATH";
+//        
+//	
+//	if(nom.contains("INFO") || nom.contains("BASE") || nom.contains("RESE"))
+//		return "INFO";
+//		
+//		return "_"+nom;
+//	}
+	public static int setSemestreAnnee(String annee ){
+		if(annee==null)
+			return 2014 ;
+		 
+		if(annee.contains("2004") )
+			return 2004 ;
+		if(annee.contains("2007") )
+			return 2007 ;
+		if(annee.contains("2008") )
+			return 2008 ;
+		if(annee.contains("2009") )
+			return 2009 ;
+		if(annee.contains("2010") )
+			return 2010 ;
+		if(annee.contains("2011") )
+			return 2011 ;
+		if(annee.contains("2012") )
+			return 2012 ;
+		if(annee.contains("2013") )
+			return 2013 ;
+		if(annee.contains("2014") )
+			return 2013 ;
+		if(annee.contains("2015") )
+			return 2014 ;
+	 return 2014;
+			
+	}
+	public static String getAnneeNote(String annee){
+		
+		
+		if(annee.contains("/") && annee.trim().length()==5)
+			return annee.substring(0,5);
+		
+		return annee ;
+	}
+	
+	public static String getEtablissementLicenceAutre(String etablissementLicence) {
+		
+		if (etablissementLicence==null)
+			return null ;
+
+		
+		
+
+		
+		if (etablissementLicence.contains("FACULTÉ DE SCIENCES BEN MSIK") || etablissementLicence.contains ("FACULTÉ DES SCIENCES OUJDA") || etablissementLicence.contains("FACULTÉ DES SCIENCES RABAT") ||etablissementLicence.contains("SEMLALIA")|| etablissementLicence.contains("AGDAL") || etablissementLicence.contains("FACULTÉ DES SCIENCES ")	)
+			return "Faculté des sciences";
+if (etablissementLicence.contains("fès"))
+	return "Faculté des sciences ";
+		
+		String etabLicenceAutre = etablissementLicence.toUpperCase();
+
+		
+		
+		if (etabLicenceAutre.contains("JURIDQUE")
+				|| etabLicenceAutre.contains("FSJES") ||  etabLicenceAutre.contains("JURIDIQUES") )
+			
+			return "Faculté des sciences juridiques économiques et sociales";
+		
+			if (etabLicenceAutre.contains("FACULTE DES SCIENCES") ||etabLicenceAutre.contains("FACULTÉ DES SCIENCES OUJDA")
+					|| etabLicenceAutre.contains("FSSM")
+					|| (etabLicenceAutre.contains("ACULTE ") || etabLicenceAutre.contains(" DHAR")) || etabLicenceAutre.contains("AGADIR"))
+				
+				return "Faculté des sciences";
+
+		if (etabLicenceAutre.contains("PLUR")
+				|| etabLicenceAutre.contains("POLY"))
+			return "Faculté polydisciplinaire";
+
+		if (etabLicenceAutre.contains("COLE NATIONAL ")
+				|| etabLicenceAutre.contains("INSEA "))
+			return "Ecole d'ingénieurs";
+
+		if (etabLicenceAutre.contains("FST") || etabLicenceAutre.contains("AUCUNE"))
+			return "Faculté des sciences et techniques";
+		if (etabLicenceAutre.contains("EST"))
+			return "Ecole Supérieure de Technologie";
+
+		if (etabLicenceAutre.contains("ENS")
+				|| etabLicenceAutre.contains("NORMAL"))
+
+			return "Ecole Normale Supérieure";
+
+		if (etabLicenceAutre.contains("EFET"))
+
+			return "EFET";
+
+		if (etabLicenceAutre == null)
+			return null;
+
+		return etablissementLicence;
+
+	}
+	
+	public static String getEtablissementDeugAutre(String etablissementDeug) {
+		if (etablissementDeug==null)
+			return null ;
+		if (etablissementDeug.contains("FACULTÉ DE SCIENCES BEN MSIK") || etablissementDeug.contains ("FACULTÉ DES SCIENCES OUJDA") || etablissementDeug.contains("FACULTÉ DES SCIENCES RABAT")	)
+			return "FACULTÉ DES SCIENCES  ";
+		String etabDeugAutre = etablissementDeug.toUpperCase();
+		
+		 if (etabDeugAutre.contains("ISTA") || etabDeugAutre.contains("OFPPT") || etabDeugAutre.contains("INSTITUT") )
+			 return "OFPPT";
+		 if (etabDeugAutre.contains("FACULTE DES") || etabDeugAutre.contains("FSDM") || (etabDeugAutre.contains("FACULTE DES SCIENCES") || etabDeugAutre.contains("FSSM")  || etabDeugAutre.contains("DHAR") ) )
+			 return "faculté des sciences";
+		 if (etabDeugAutre.contains("FACULTE PLU")  || etabDeugAutre.contains("PLU"))
+			 return "Faculté polydisciplinaire";
+		 if (etabDeugAutre.contains("BTS") || etabDeugAutre.contains("LYC") || etabDeugAutre.contains("BREVET"))
+			 return "Brevet Technicien Superieur BTS";
+		 if (etabDeugAutre.contains("ENSET") || etabDeugAutre.contains("ECOLE NORMALE SUPERIEURE DE "))
+			 return "Ecole d'ingénieurs";
+		 if (etabDeugAutre.contains("ENSAM") )
+			 return "Ecole d'ingénieurs";
+		 if(etabDeugAutre.contains("ENS") || etabDeugAutre.contains("ECOLE NORMAL") || etabDeugAutre.contains("ÉCOLE NORMALE SUPERIEURE"))
+			 return "Ecole Normale Supérieure";
+		 if(etabDeugAutre.contains("EST") || etabDeugAutre.contains("ECOLE SUPERIEURE DE TECHNOLOGIE"))
+			 return "Ecole Supérieure de Technologie";
+		 if(etabDeugAutre.contains("FST"))
+			 return "Faculté des sciences et techniques";
+		 if(etabDeugAutre.contains("CPGE") || (etabDeugAutre.contains("CLASSE")))
+			 return "CPGE";
+		 
+		 if (etabDeugAutre == null)
+				return null;
+		 
+		 return etablissementDeug;
+		}
+	/*
+	 * public static boolean check_etab_deug_autre(String etabDeugAutre) {
+	 * 
+	 * return true ;
+	 * 
+	 * /* if (etabDeugAutre.contains("ISTA") || etabDeugAutre.contains("OFPPT")
+	 * || etabDeugAutre.contains("institut") ) return true; if
+	 * (etabDeugAutre.contains("Faculté des") || etabDeugAutre.contains("FSDM")
+	 * || (etabDeugAutre.contains("Faculté des") ||
+	 * etabDeugAutre.contains("FSSM") || etabDeugAutre.contains("dhar") ) )
+	 * return true; if (etabDeugAutre.contains("Faculté plu") ) return true; if
+	 * (etabDeugAutre.contains("bts") || etabDeugAutre.contains("lyc") ||
+	 * etabDeugAutre.contains("brevet")) return true; if
+	 * (etabDeugAutre.contains("enset") ||
+	 * etabDeugAutre.contains("Ecole Normale Superieure de ")) return true; if
+	 * (etabDeugAutre.contains("ensam") ) return true;
+	 * if(etabDeugAutre.contains("ens") ||
+	 * etabDeugAutre.contains("ecole normal")) return true;
+	 * if(etabDeugAutre.contains("est")) return true;
+	 * if(etabDeugAutre.contains("FST")) return true;
+	 * if(etabDeugAutre.contains("cpge") || (etabDeugAutre.contains("classe")))
+	 * return true;
+	 * 
+	 * 
+	 * return false;
+	 * 
+	 * }
+	 */
+	public static String fixe_typeLicence(String type) {
+
+		if (type.contains("professionnelle"))
+			return "Licence professionnelle LP";
+		else
+			return "Licence LMD";
+	}
+
+	public static String getSpecialiteDeug(String s) {
+		String sp = s.toUpperCase();
+
+		if (sp.matches(".*SYST.*R.*SE")) {
+			System.out.println("000");
+			System.out.println(sp + "  "
+					+ "ADMINISTRATION DES SYSTÈMES ET RÉSEAUX");
+			return "_ADMINISTRATION DES SYSTÈMES ET RÉSEAUX";
+		}
+
+		if (sp.matches(".*SCI.*INFO.*MATH.*APP.*")) {
+			// System.out.println(sp + "  " +
+			// "SCIENCES INFORMATIQUES ET MATHÉMATIQUES APPLIQUÉS");
+			return "_SCIENCES INFORMATIQUES ET MATHÉMATIQUES APPLIQUÉS";
+		}
+
+		if (sp.matches(".*SCIENCE.* MATH.*INFO.*")) {
+			// System.out.println(sp + "  "+
+			// "SCIENCES MATHÉMATIQUE ET INFORMATIQUE");
+			return "_SCIENCES MATHÉMATIQUE ET INFORMATIQUE";
+		}
+
+		if (sp.matches(".*AD.*APP.*IN")) {
+			// System.out.println(sp + "  "+
+			// "_ADMINISTRATEUR DES APPLICATIONS INFORMATIQUES");
+			return "_ADMI";
+		}
+
+		if (sp.matches(".*MATH.*APP.*")) {
+			// System.out.println(sp + "  " + "MATHÉMATIQUES APPLIQUÉES");
+			return "_MATHÉMATIQUES APPLIQUÉES";
+		}
+
+		if (sp.matches(".*MA.*I.*P.*C.*") || sp.matches(".*M.*I.*P.*C")) {
+			// System.out.println(sp + "  "+
+			// "_MATHÉMATIQUES INFORMATIQUES PHYSIQUE CHIMIE");
+			return "_MATHÉMATIQUES INFORMATIQUES PHYSIQUE CHIMIE";
+		}
+
+		if (sp.matches(".*TECH.*R.S.*")) {
+			// System.out.println(sp + "  " +
+			// "TECHNIQUES DES RÉSEAUX INFORMATIQUES");
+			return "_TECHNIQUES DES RÉSEAUX INFORMATIQUES";
+		}
+
+		/*
+		 * if (sp.matches("DEV.*INFO*")) { System.out.println(sp + "  " +
+		 * "DEVELOPPEMENT INFORMATIQUES"); return
+		 * "_DEVELOPPEMENT INFORMATIQUES"; }
+		 */
+
+		return sp;
+
+	}
+
+	public static String getModule(String nom2) {
+
+		String nom = nom2.toUpperCase();
+
+		if (nom.contains("PHYSIQUE4") || nom.contains("PHYSIQUE4")
+				|| nom.contains("PHYSIQUE 4") || nom.contains("PHISIQUE4")) {
+			// System.out.println(nom + "  " + "PHYSIQUE 4.");
+			return "PHYSIQUE 4";
+		}
+
+		if (nom.contains("PHYSIC 3") || nom.contains("PHYSIQUE III")
+				|| nom.contains("PHYSIQUE3") || nom.contains("PHYSIQUE LLL")
+				|| nom.contains("PHISIQUE3") || nom.contains("PHYSIQUE MA 3")
+				|| nom.contains("PHYSIQUE 3")
+
+		) {
+			// System.out.println(nom + "  " + "PHYSIQUE 3.");
+			return "PHYSIQUE 3";
+		}
+
+		if (nom.contains("PHYSIQUE M2") || nom.contains("PHYSIQUE 2")
+				|| nom.contains("PHISIQUE2") || nom.contains("PHYSIQUE2")
+				|| nom.contains("PHYSIQUE 2 ") || nom.contains("PHYSIQUE II")
+				|| nom.contains("PHISIQUE 2") || nom.contains("PHISIQUE II")) {
+			// System.out.println(nom + "  " + "PHYSIQUE 2.");
+			return "PHYSIQUE 2";
+		}
+		if (nom.contains("PHISIQUE 1") || nom.contains("PHYSIQUE1")
+				|| nom.contains("PHYSIQYE1") || nom.contains(" PHYSIQUE I")
+				|| nom.contains("PHYSIQUES1") || nom.contains("PHYSIQUE M1")
+				|| nom.contains("PHISIQUE I") || nom.contains("PHYSIQUE")
+				|| nom.contains("PHYSIQUE") || nom.contains("PHISIQUE1")) {
+			// System.out.println(nom + "  " + "PHYSIQUE 1.");
+			return "PHYSIQUE 1";
+		}
+
+		if (nom.contains("") || nom.contains("") || nom.contains("")
+				|| nom.contains("") || nom.contains("")) {
+			// System.out.println(nom + "  " + "PHYSIQUE 1.");
+			return "ALGEBRE 4";
+		}
+
+		if (nom.contains("") || nom.contains("") || nom.contains("")
+				|| nom.contains("") || nom.contains("")) {
+			// System.out.println(nom + "  " + "PHYSIQUE 1.");
+			return "ALGEBRE 3";
+		}
+
+		if (nom.contains("ALGEBRE 2") || nom.contains("ALGEBRE II")
+				|| nom.contains("ALGEBRE2") || nom.contains("")
+				|| nom.contains("ALGERE 2")) {
+			// System.out.println(nom + "  " + "PHYSIQUE 1.");
+			return "ALGEBRE 2";
+		}
+		if (nom.contains("ALGEBRE 1") || nom.contains("ALGEBRE")
+				|| nom.contains("") || nom.contains("") || nom.contains("")) {
+			// System.out.println(nom + "  " + "PHYSIQUE 1.");
+			return "ALGEBRE 1";
+		}
+
+		return nom;
+
+	}
+
+	public static String getAcademies(String academie2) {
+		String academie = academie2.toUpperCase();
+
+		if (academie.contains("CASA") || academie.contains("AIN")
+				|| academie.contains("ANFA") || academie.contains("MSIK")
+				|| academie.contains("SICK") || academie.contains("SULTAN")
+				|| academie.contains("BERNOUSSI")
+				|| academie.contains("HAY HASSANI")
+
+		)
+			return "GRAND CASABLANCA";
+
+		if (academie.contains("MEK") || academie.contains("MÉK")
+				|| academie.contains("TAFI") || academie.contains("RACH"))
+			return "MEKNÈS-TAFILALET ";
+
+		if (academie.contains("FES") || academie.contains("BOUL")
+				|| academie.contains("FÈS") || academie.contains("DBIBEGH"))
+			return "FÈS-BOULEMANE";
+
+		if (academie.contains("AGADIR") || academie.contains("SOUS")
+				|| academie.contains("OUTANANE") || academie.contains("TAR"))
+			return "SOUSS-MASSA-DRÂA";
+
+		if (academie.contains("TAZA") || academie.contains("HOCEIMA")
+				|| academie.contains("HOSSEIMA")
+				|| academie.contains("ALHOUCIMA")
+				|| academie.contains("DRIOUCH"))
+			return "TAZA-HOCEÏMA-TAOUNATE";
+
+		if (academie.contains("TANGER") || academie.contains("TETOUAN")
+				|| academie.contains("LARACHE"))
+			return "TANGER-TÉTOUAN";
+
+		if (academie.contains("NTAL") || academie.contains("JDA"))
+			return "L'ORIENTAL";
+
+		if (academie.contains("ABAT") || academie.contains("TEMARA")
+				|| academie.contains("SAL"))
+			return "RABAT-SALÉ-ZEMMOUR-ZAËR";
+
+		if (academie.contains("GHARB") || academie.contains("CHRARDA")
+				|| academie.contains("NITRA") || academie.contains("KACEM")
+				|| academie.contains("SIDI SLIMANE"))
+			return "GHARB-CHRARDA-BENI HSSEN";
+
+		if (academie.contains("MARRAKE") || academie.contains("RHAMNA"))
+			return "MARRAKECH-TENSIFT-AL HAOUZ";
+
+		if (academie.contains("DOUKKALA") || academie.contains("JADIDA")
+				|| academie.contains("ABDA") || academie.contains("DOUKA")
+				|| academie.contains("SAFI"))
+			return "DOUKKALA-ABDA";
+
+		if (academie.contains("MELLAL") || academie.contains("TADLA")
+				|| academie.contains("AZILAL") || academie.contains("SRAGHNA"))
+			return "MARRAKECH-TENSIFT-AL HAOUZ";
+
+		if (academie.contains("SETTAT") || academie.contains("OURDIGHA")
+				|| academie.contains("CHAOU") || academie.contains("KHOURIBGA"))
+			return "CHAOUIA-OUARDIGHA";
+
+		if (academie.contains("GUELMIM"))
+			return "GUELMIM-ES SEMARA";
+
+		if (academie.contains("LAAYOUNE") || academie.contains("LAGOUIRA")
+				|| academie.contains("HAMRA") || academie.contains("DAHAB"))
+			return "LAÂYOUNE-BOUJDOUR-SAKIA EL HAMRA";
+
+		if (academie.contains("AGBOVILLE") || academie.contains("MAURITANIE")
+				|| academie.contains("BAMAKO") ||
+
+				academie.contains("TRANGER") || academie.contains("TUNISIE")
+				|| academie.contains("RIVE DROITE")
+				|| academie.contains("MORONI")
+
+		)
+			return "ÉTRANGER";
+
+		return academie2.toUpperCase();
+
+	}
+
+}

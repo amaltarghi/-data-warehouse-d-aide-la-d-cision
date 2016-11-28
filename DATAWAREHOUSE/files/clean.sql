@@ -1,0 +1,11 @@
+ update CLN_INFORMATION  set NATIONALITE ='Marocaine'  where ID_CANDIDAT ='4744' ;
+update CLN_INFORMATION  set VILLE_BAC = 'AUTRE'  ,PAYS = 'Niger' , NATIONALITE ='Nigerien' where NATIONALITE ='Niger';
+update CLN_INFORMATION  set NATIONALITE ='Marocaine' where ID_CANDIDAT ='4995';
+update CLN_INFORMATION  set ville_bac ='autre' ,pays='Mali' ,SERIEBAC ='Autres' where ID_CANDIDAT ='4731';
+update CLN_INFORMATION  set ville_bac ='autre' ,pays='Mauritanie' ,PROVINCE ='NOUADHIBOU ' where ID_CANDIDAT ='1028';
+update CLN_INFORMATION  set ville_bac ='autre' ,pays='Iles de Comores' where ID_CANDIDAT ='4550';
+update CLN_INFORMATION  set ville_bac ='autre' ,pays='Mali' ,SERIEBAC ='Autres' where ID_CANDIDAT ='1235';
+update CLN_INFORMATION  set ville_bac ='autre' ,pays='Mali' ,SERIEBAC ='Autres' where ID_CANDIDAT ='3848';
+update CLN_INFORMATION  set NATIONALITE ='Marocaine'  where ID_CANDIDAT ='4744';
+update CLN_INFORMATION  set ville_bac ='autre',pays='Iles de Comores'  where ID_CANDIDAT ='3432';
+update CLN_INFORMATION  set ville_bac ='autre',pays='COTES D IVOIRE'  where ID_CANDIDAT ='6101';

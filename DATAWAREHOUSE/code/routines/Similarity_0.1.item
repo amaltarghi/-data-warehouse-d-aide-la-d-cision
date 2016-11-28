@@ -1,0 +1,516 @@
+package routines;
+
+public class Similarity {
+	public static final double TAUX_ERREUR = 0.25;
+
+	private static double similarity(String s1, String s2) {
+		String longer = s1, shorter = s2;
+		if (s1.length() < s2.length()) {
+			longer = s2;
+			shorter = s1;
+		}
+		int longerLength = longer.length();
+		if (longerLength == 0) {
+			return 1.0;
+		}
+		return (longerLength - editDistance(longer, shorter))
+				/ (double) longerLength;
+
+	}
+
+	private static int editDistance(String s1, String s2) {
+		s1 = s1.toLowerCase();
+		s2 = s2.toLowerCase();
+
+		int[] costs = new int[s2.length() + 1];
+		for (int i = 0; i <= s1.length(); i++) {
+			int lastValue = i;
+			for (int j = 0; j <= s2.length(); j++) {
+				if (i == 0)
+					costs[j] = j;
+				else {
+					if (j > 0) {
+						int newValue = costs[j - 1];
+						if (s1.charAt(i - 1) != s2.charAt(j - 1))
+							newValue = Math.min(Math.min(newValue, lastValue),
+									costs[j]) + 1;
+						costs[j - 1] = lastValue;
+						lastValue = newValue;
+					}
+				}
+			}
+			if (i > 0)
+				costs[s2.length()] = lastValue;
+		}
+		return costs[s2.length()];
+	}
+
+	public static String correctCity(String orgVille) {
+		if(orgVille==null)
+return "Autre";
+ 		if (orgVille.contains("NIAMEY") || orgVille.contains("BAMAKO")
+				|| orgVille.contains("NOUADHIBOU")
+				|| orgVille.contains("MBENI COMORES")
+				|| orgVille.contains("GAFSA") || orgVille.contains("TAHOUA")
+				|| orgVille.contains("MTE DE HOMBO_ANJOUAN")
+				|| orgVille.contains("FERKESSEDOUGOU")){
+ 			return "Autre";
+			
+		}
+
+		String[] villes = { "Afourar ", "Agadir ", "Aghbala", "Aghbalou ",
+				"Agdz  ", "Agouraï ", "Aguelmous ", "Ahfir", "Aïn Attig ",
+				"Aïn Leuh", "Aïn Bni Mathar ", "Ain Cheggag ", "Aïn Dorij ",
+				"Aïn El Aouda ", "Aïn Erreggada", "Aïn Harrouda ",
+				"Aïn Jemaa ", "Aïn Karma ", "Aïn Taoujdate ", "Aït Iaaza",
+				"Aït Baha ", "Aït Boubidmane ", "Aït Daoud ", "Aït Ishaq ",
+				"Aït Melloul ", "Aït Ourir ", "Akka ", "Aklim ", "Aknoul",
+				"Ajdir ", "Ajdir ", "Al Aaroui ", "Al Hoceïma ", "Alnif ",
+				"Amizmiz ", "Aoufous", "Aoulouz ", "Aourir ", "Arbaoua ",
+				"Arfoud ", "Assa ", "Assahrij ", "Assilah ", "Azemmour ",
+				"Azilal ", "Azrou", "Bab Berred", "Bab Taza ", "Bejaad ",
+				"Ben Ahmed ", "Ben Guerir ", "Ben Taïeb ", "Ben Yakhlef ",
+				"Beni Mellal ", "Ben Slimane ", "Berkane ", "Berrechid ",
+				"Bhalil ", "Biougra ", "Beni Ansar ", "Beni Bouayach ",
+				"Beni Chiker ", "Beni Drar ", "Beni Hadifa ", "Beni Tadjite ",
+				"Bouanane ", "Bouarfa ", "Boudnib ", "Bouguedra ", "Bouhdila ",
+				"Bouizakarne ", "Boujdour ", "Boujniba", "Boulanouare",
+				"Boulemane ", "Boumalne Dadès ", "Boumia ", "Bouskoura",
+				"Bouznika", "Bradia ", "Brikcha ", "Bzou ", "Casablanca ",
+				"Chefchaouen ", "Chichaoua ", "Dakhla ", "Dar Bni Karrich ",
+				"Dar Chaoui ", "Dar El Kebdani ", "Dar Gueddari",
+				"Dar Oulad Zidouh ", "Dcheïra El Jihadia ", "Debdou ",
+				"Demnate ", "Deroua ", "Driouch ", "El Jadida ", "Essaouira ",
+				"Echemmaia ", "El Aïoun Sidi Mellouk ", "El Borouj ",
+				"El Gara ", "El Guerdane ", "El Hajeb ", "El Hanchane ",
+				"El Jadida", "El Kbab", "El Kelaa des Mgouna ",
+				"El Kelaa des Sraghna ", "El Ksiba ", "El Mansouria ",
+				"El Menzel ", "El Ouatia ", "Errachidia ", "Er-Rich ",
+				"Es-Semara", "Fam El Hisn ", "Fès", "Figuig ", "Fnideq ",
+				"Foum Jemaa", "Foum Zguid", "Fquih Ben Salah ", "Guercif",
+				"Ghafsaï ", "Ghmate ", "Goulmima", "Gourrama ", "Guelmim ",
+				"Guigou ", "Guisser ", "Harhoura ", "Had Bouhssoussen ",
+				"Had Kourt", "Had Oued Ifrane ", "Haj Kaddour", "Hattane ",
+				"Ifrane", "Ighoud ", "Imintanoute", "Imouzzer Kandar ",
+				"Imouzzer Marmoucha ", "Imzouren ", "Inezgane", "Igherm ",
+				"Issaguen ", "Itzer ", "Jaadar ", "Jamaat Shaim ", "Jebha ",
+				"Jerada ", "Jorf El Melha", "Khenifra", "Kelaat M'Gouna ",
+				"Karia Ba Mohamed", "Kariat Arekmane ", "Kasba Tadla",
+				"Kassita ", "Kehf Nsour ", "Kénitra ", "Kerouna ",
+				"Kerrouchen ", "Khémis Sahel ", "Khémisset", "Khénifra ",
+				"Khénichet ", "Khouribga ", "Ksar El Kébir ", "Laâounate ",
+				"Laakarta ", "Laattaouia", "Laayoune ", "Lagouira", "Lakhsas",
+				"Lahraouyine", "Lalla Mimouna ", "Lalla Takarkoust ",
+				"Larache ", "Lbir Jdid ", "Loualidia ", "Loulad ", "Lqliaa",
+				"M'Diq", "Moulay Driss Zerhoun", "Maaziz ", "Madagh ",
+				"Marrakech", "Martil ", "Massa ", "Matmata ", "Médiouna",
+				"Mechra Bel Ksiri ", "Mehdya ", "Meknès ", "M'Haya ", "Midar ",
+				"Midelt ", "Missour", "Mohammédia ", "Moqrisset",
+				"Moulay Abdallah ", "Moulay Ali Chérif", "Moulay Bouazza",
+				"Moulay Bousselham ", "Moulay Brahim", "M'Rirt", "Nador",
+				"Naïma ", "Nouaceur ", "Ouaouizeght ", "Ouarzazate",
+				"Oued Amlil", "Oued Heïmer", "Oued Laou", "Oued Zem ",
+				"Ouezzane ", "Ouislane ", "Oujda ", "Oulad Abbou",
+				"Oulad Amrane ", "Oulad Ayad ", "Oulad Berhil ", "Oulad Frej ",
+				"Oulad Ghadbane ", "Oulad H'Riz Sahel ", "Oulad M'Barek ",
+				"Oulad M'Rah ", "Oulad Saïd ", "Oulad Tayeb ", "Oulad Teïma ",
+				"Oulad Yaïch ", "Oulad Zbaïr ", "Oulmès ", "Ounagha",
+				"Outat El Haj ", "Rabat ", "Ras El Aïn ", "Ras El Ma ",
+				"Ribate El Kheïr ", "Sabaa Aiyoun ", "Safi", "Saïdia ", "Salé",
+				"Sebt El Maarif ", "Sebt Gzoula ", "Sebt Jahjouh ", "Sefrou ",
+				"Selouane ", "Semara", "Settat ", "Sid L'Mokhtar",
+				"Sid Zouin ", "Sidi Abdallah Ghiat", "Sidi Addi ",
+				"Sidi Ahmed ", "Sidi Allal El Bahraoui ", "Sidi Allal Tazi ",
+				"Sidi Bennour ", "Sidi Bou Othmane ", "Sidi Boubker",
+				"Sidi Bouknadel", "Sidi Bouzid ", "Sidi Kacem ", "Sidi Ifni ",
+				"Sidi Jaber ", "Sidi Lyamani", "Sidi Rahhal ",
+				"Sidi Rahhal Chataï ", "Sidi Slimane ",
+				"Sidi Slimane Echcharraa ", "Sidi Smaïl ", "Sidi Taïbi",
+				"Sidi Yahya El Gharb ", "Skhirate ", "Skhour Rehamna ",
+				"Skoura ", "Smimou ", "Soualem ", "Souk El Arbaâ ",
+				"Souk Sebt Oulad Nemma", "Tanger", "Taourirt", "Tarfaya ",
+				"Taroudannt ", "Taza", "Tétouan ", "Tabounte ", "Tafetachte ",
+				"Tafraout", "Tafrisset", "Taghjijt ", "Tahannaout", "Tahla ",
+				"Taïnaste", "Talmest ", "Taliouine ", "Talsint", "Tamallalt ",
+				"Tamanar ", "Tamassint ", "Tameslouht", "Tan-Tan ",
+				"Taounate ", "Targuist ", "Tata ", "Taznakht ", "Témara ",
+				"Temsia, ", "Thar Es Souk ", "Tidass ", "Tiflet ",
+				"Tighassaline", "Tighza ", "Timahdite ", "Tinejdad",
+				"Tinghir ", "Tissa ", "Tit Mellil ", "Tizi Ouasli", "Tiznit ",
+				"Tiztoutine ", "Touima ", "Touissit ", "Toulal ", "Tounfite ",
+				"Youssoufia", "Zagora ", "Zaïda ", "Zaïo ",
+				"Zaouïat Bougrine ", "Zaouïat Cheikh ", "Zeghanghane ",
+				"Zemamra ", "Zirara ", "Zoumi ", "Zrarda ", "autre" };
+
+		double s = 0l;
+		String result = "";
+
+		for (String ville : villes) {
+			double tempS = similarity(orgVille, ville);
+			if (tempS > s) {
+				s = tempS;
+				result = ville;
+			}
+		}
+
+	 
+		if (s < TAUX_ERREUR)
+			return "Inconue";
+		
+		return result;
+	}
+
+	public static String correctSerieBac(String orgSerieBac) {
+		String[] seriesBac = { "Sciences Mathématiques B (SMB)",
+				"Sciences Mathématiques A (SMA)",
+				"Sciences de la Vie et de la Terre (SVT)",
+				"Science des Technologies Electrique (STE)",
+				"Sciences Physique (PC)",
+				"Science des Technologies Mécanique (STM)", "Autres"
+
+		};
+
+		double s = 0l;
+		String result = "";
+
+		for (String serieBac : seriesBac) {
+			double tempS = similarity(orgSerieBac, serieBac);
+			if (tempS > s) {
+				s = tempS;
+				result = serieBac;
+			}
+		}
+
+		return result;
+
+	}
+
+	public static String correctRegion(String orgRegion) {
+
+		String[] regions = { "Grand Casablanca", "Chaouia-Ouardigha",
+				"Doukkala-Abda", "Fès-Boulemane", "Gharb-Chrarda-Beni Hssen",
+				"Guelmim-Es Semara", "Marrakech-Tensift-Al Haouz",
+				"Meknès-Tafilalet", "Oriental", "Rabat-Salé-Zemmour-Zaër",
+				"Souss-Massa-Draâ", "Tadla-Azilal", "Tanger-Tétouan",
+				"Taza-Al Hoceïma-Taounate", "Laayoune-Boujdour-Sakia-Hamra",
+				"Oued-Eddahab-Lagouira",
+
+		};
+
+		double s = 0l;
+		String result = "";
+
+		for (String region : regions) {
+			double tempS = similarity(orgRegion, region);
+			if (tempS > s) {
+				s = tempS;
+				result = region;
+			}
+		}
+
+		// System.out.println("The most similar city to <"+orgRegion+"> is "+result+" with "+(s*100)+" %");
+
+		return result;
+	}
+
+	public static String orrectProvince(String orgProvince) {
+
+		String[] provinces = { "Chefchaouen", "Fahs-Anjra", "Larache",
+				"Tétouan", "Ouezzane", "Al Hoceima", "Berkane", "Jrada",
+				"Nador", "Taourirt", "Driouch", "Guercif", "Boulemane",
+				"El Hajeb", "Ifrane", "Sefrou", "Taounate", "Taza",
+				"Moulay Yacoub", "Kenitra", "Khemisset", "Sidi Kacem",
+				"Sidi Slimane", "Azilal", "Béni Mellal", "Khénifra",
+				"Khouribga", "Midelt", "Fquih Ben Salah", "Ben Slimane",
+				"El Jadida", "Mediouna", "Nouacer", "Settat", "Berrechid",
+				"Sidi Bennour", "Al Haouz", "Chichaoua", "El Kelaa Sraghna",
+				"Essaouira", "Safi", "Rehamna", "Youssoufia", "Errachidia",
+				"Figuig", "Ouarzazate", "Zagora", "Tinghir",
+				"Chtouka Ait Baha", "Taroudannt", "Tata", "Tiznit", "Guelmim",
+				"Tan-Tan", "Sidi Ifni", "Assa-Zag", "Es_Semara", "Boujdour",
+				"Laâyoune", "Tarfaya", "Aousserd", "Oued Eddahab",
+				"Grand Casablanca", "Chaouia-Ouardigha", "Doukkala-Abda",
+				"Fès-Boulemane", "Gharb-Chrarda-Beni Hssen",
+				"Guelmim-Es Semara", "Marrakech-Tensift-Al Haouz",
+				"Meknès-Tafilalet", "Oriental", "Oujda Angad",
+				"Rabat-Salé-Zemmour-Zaër", "Souss-Massa-Draâ", "Tadla-Azilal",
+				"Tanger-Tétouan", "Taza-Al Hoceïma-Taounate",
+				"Laayoune-Boujdour-Sakia-Hamra", "Oued-Eddahab-Lagouira",
+				"Aïn Harrouda", "Ben Yakhlef", "Bouskoura", "Casablanca",
+				"Médiouna", "Mohammédia", "Tit Mellil", "Ben Yakhlef",
+				"Bejaâd", "Ben Ahmed", "Benslimane", "Berrechid", "Boujniba",
+				"Boulanouare", "Bouznika", "Deroua", "El Borouj", "El Gara",
+				"Guisser", "Hattane", "Khouribga", "Loulad", "Oued Zem",
+				"Oulad Abbou", "Oulad H", ",Riz Sahel", "Oulad M", ",rah",
+				"Oulad Saïd", "Oulad Sidi Ben Daoud", "Ras El Aïn", "Settat",
+				"Sidi Rahhal Chataï", "Soualem", "Azemmour", "Bir Jdid",
+				"Bouguedra", "Echemmaia", "El Jadida", "Hrara", "Ighoud",
+				"Jamâat Shaim", "Jorf Lasfar", "Khemis Zemamra", "Laaounate",
+				"Moulay Abdallah", "Oualidia", "Oulad Amrane", "Oulad Frej",
+				"Oulad Ghadbane", "Safi", "Sebt El Maârif", "Sebt Gzoula",
+				"Sidi Ahmed", "Sidi Ali Ban Hamdouche", "Sidi Bennour",
+				"Sidi Bouzid", "Sidi Smaïl", "Youssoufia", "Fès",
+				"Aïn Cheggag", "Bhalil", "Boulemane", "El Menzel", "Guigou",
+				"Imouzzer Kandar", "Imouzzer Marmoucha", "Missour",
+				"Moulay Yaâcoub", "Ouled Tayeb", "Outat El Haj",
+				"Ribate El Kheir", "Séfrou", "Skhinate", "Tafajight",
+				"Arbaoua", "Aïn Dorij", "Dar Gueddari", "Had Kourt",
+				"Jorf El Melha", "Kénitra", "Khenichet", "Lalla Mimouna",
+				"Mechra Bel Ksiri", "Mehdia", "Moulay Bousselham",
+				"Sidi Allal Tazi", "Sidi Kacem", "Sidi Slimane", "Sidi Taibi",
+				"Sidi Yahya El Gharb", "Souk El Arbaa", "Akka", "Assa",
+				"Bouizakarne", "El Ouatia", "Es-Semara", "Fam El Hisn",
+				"Foum Zguid", "Guelmim", "Taghjijt", "Tan-Tan", "Tata", "Zag",
+				"Marrakech", "Ait Daoud", "Amizmiz", "Assahrij", "Aït Ourir",
+				"Ben Guerir", "Chichaoua", "El Hanchane",
+				"El Kelaâ des Sraghna", "Essaouira", "Fraïta", "Ghmate",
+				"Ighounane", "Imintanoute", "Kattara", "Lalla Takerkoust",
+				"Loudaya", "Lâattaouia", "Moulay Brahim", "Mzouda", "Ounagha",
+				"Sid L", ",Mokhtar", "Sid Zouin", "Sidi Abdallah Ghiat",
+				"Sidi Bou Othmane", "Sidi Rahhal", "Skhour Rehamna", "Smimou",
+				"Tafetachte", "Tahannaout", "Talmest", "Tamallalt", "Tamanar",
+				"Tamansourt", "Tameslouht", "Tanalt", "Zeubelemok", "Meknès‎",
+				"Khénifra", "Agourai", "Ain Taoujdate", "MyAliCherif",
+				"Rissani", "Amalou Ighriben", "Aoufous", "Arfoud", "Azrou",
+				"Aïn Jemaa", "Aïn Karma", "Aïn Leuh", "Aït Boubidmane",
+				"Aït Ishaq", "Boudnib", "Boufakrane", "Boumia", "El Hajeb",
+				"Elkbab", "Er-Rich", "Errachidia", "Gardmit", "Goulmima",
+				"Gourrama", "Had Bouhssoussen", "Haj Kaddour", "Ifrane",
+				"Itzer", "Jorf", "Kehf Nsour", "Kerrouchen", "M", ",haya", "M",
+				",rirt", "Midelt", "Moulay Ali Cherif", "Moulay Bouazza",
+				"Moulay Idriss Zerhoun", "Moussaoua", "N", ",Zalat Bni Amar",
+				"Ouaoumana", "Oued Ifrane", "Sabaa Aiyoun", "Sebt Jahjouh",
+				"Sidi Addi", "Tichoute", "Tighassaline", "Tighza", "Timahdite",
+				"Tinejdad", "Tizguite", "Toulal", "Tounfite", "Zaouia d",
+				",Ifrane", "Zaïda", "Ahfir", "Aklim", "Al Aroui",
+				"Aïn Bni Mathar", "Aïn Erreggada", "Ben Taïeb", "Berkane",
+				"Bni Ansar", "Bni Chiker", "Bni Drar", "Bni Tadjite",
+				"Bouanane", "Bouarfa", "Bouhdila", "Dar El Kebdani", "Debdou",
+				"Douar Kannine", "Driouch", "El Aïoun Sidi Mellouk",
+				"Farkhana", "Figuig", "Ihddaden", "Jaâdar", "Jerada",
+				"Kariat Arekmane", "Kassita", "Kerouna", "Laâtamna", "Madagh",
+				"Midar", "Nador", "Naima", "Oued Heimer", "Oujda", "Ras El Ma",
+				"Saïdia", "Selouane", "Sidi Boubker", "Sidi Slimane Echcharaa",
+				"Talsint", "Taourirt", "Tendrara", "Tiztoutine", "Touima",
+				"Touissit", "Zaïo", "Zeghanghane", "Rabat", "Salé",
+				"Ain El Aouda", "Harhoura", "Khémisset", "Oulmès", "Rommani",
+				"Sidi Allal El Bahraoui", "Sidi Bouknadel", "Skhirat",
+				"Tamesna", "Témara", "Tiddas", "Tiflet", "Touarga", "Agadir",
+				"Agdz", "Agni Izimmer", "Aït Melloul", "Alnif", "Anzi",
+				"Aoulouz", "Aourir", "Arazane", "Aït Baha", "Aït Iaâza",
+				"Aït Yalla", "Ben Sergao", "Biougra", "Boumalne-Dadès",
+				"Dcheira El Jihadia", "Drargua", "El Guerdane",
+				"Harte Lyamine", "Ida Ougnidif", "Ifri", "Igdamen", "Ighil n",
+				",Oumgoun", "Imassine", "Inezgane", "Irherm", "Kelaat-M",
+				",Gouna", "Lakhsas", "Lakhsass", "Lqliâa", "M", ",semrir",
+				"Massa (Maroc)", "Megousse", "Ouarzazate", "Oulad Berhil",
+				"Oulad Teïma", "Sarghine", "Sidi Ifni", "Skoura", "Tabounte",
+				"Tafraout", "Taghzout", "Tagzen", "Taliouine", "Tamegroute",
+				"Tamraght", "Tanoumrite Nkob Zagora", "Taourirt ait zaghar",
+				"Taroudant", "Temsia", "Tifnit", "Tisgdal", "Tiznit",
+				"Toundoute", "Zagora", "Afourar", "Aghbala", "Azilal",
+				"Aït Majden", "Beni Ayat", "Béni Mellal", "Bin elouidane",
+				"Bradia", "Bzou", "Dar Oulad Zidouh", "Demnate", "Dra", ",a",
+				"El Ksiba", "Foum Jamaa", "Fquih Ben Salah", "Kasba Tadla",
+				"Ouaouizeght", "Oulad Ayad", "Oulad M", ",Barek",
+				"Oulad Yaich", "Sidi Jaber", "Souk Sebt Oulad Nemma",
+				"Zaouïat Cheikh", "Tanger‎", "Tétouan‎", "Akchour", "Assilah",
+				"Bab Berred", "Bab Taza", "Brikcha", "Chefchaouen",
+				"Dar Bni Karrich", "Dar Chaoui", "Fnideq", "Gueznaia", "Jebha",
+				"Karia", "Khémis Sahel", "Ksar El Kébir", "Larache", "M",
+				",diq", "Martil", "Moqrisset", "Oued Laou", "Oued Rmel",
+				"Ouezzane", "Point Cires", "Sidi Lyamani",
+				"Sidi Mohamed ben Abdallah el-Raisuni", "Zinat", "Ajdir‎",
+				"Aknoul‎", "Al Hoceïma‎", "Aït Hichem‎", "Bni Bouayach‎",
+				"Bni Hadifa‎", "Ghafsai‎", "Guercif‎", "Imzouren‎",
+				"Inahnahen‎", "Issaguen (Ketama)‎", "Karia (El Jadida)‎",
+				"Karia Ba Mohamed‎", "Oued Amlil‎", "Oulad Zbair‎", "Tahla‎",
+				"Tala Tazegwaght‎", "Tamassint‎", "Taounate‎", "Targuist‎",
+				"Taza‎", "Taïnaste‎", "Thar Es-Souk‎", "Tissa‎",
+				"Tizi Ouasli‎", "Laayoune‎", "El Marsa‎", "Tarfaya‎",
+				"Boujdour‎", "Awsard", "Oued-Eddahab" };
+
+		double s = 0l;
+		String result = "";
+
+		for (String province : provinces) {
+			double tempS = similarity(orgProvince, province);
+			if (tempS > s) {
+				s = tempS;
+				result = province;
+			}
+		}
+
+		// System.out.println("The most similar city to <"+orgProvince+"> is "+result+" with "+(s*100)+" %");
+
+		return result;
+	}
+
+	public static String correctEtablissement(String orgEtablissement) {
+
+		String[] etablissements = { "Faculté des sciences",
+				"Faculté Polydisciplinaire",
+				"Faculté des Sciences et Techniques",
+				"Ecole Supérieure de Technologie", "Autre Ecole" };
+
+		double s = 0l;
+		String result = "";
+
+		for (String etablissement : etablissements) {
+			try {
+				double tempS = similarity(orgEtablissement, etablissement);
+				if (tempS > s) {
+					s = tempS;
+					result = etablissement;
+				}
+			} catch (Exception e) {
+
+			}
+
+		}
+
+		// System.out.println("The most similar Etablissement to <"+orgEtablissement+"> is "+result+" with "+(s*100)+" %");
+
+		return result;
+	}
+/////Modification Specialités Deug
+ public static String correctSpecialiteDeug(String orgSpecialiteDeug) {
+
+     String[] specialites = {
+     		"Sciences informatiques et mathématiques appliquées SMIA",
+     		"Développement des systèmes d'information",
+     		"Génie informatique",
+     		"Administartion des bases de données dba",
+     		"Science de la matière physique SMP",
+     		"Réseaux et télécommunication",
+     		"Systèmes informatiques et logiciels",
+     		"Génie industriel et maintenance ",
+     		"Réseaux et Systèmes informatiques",
+     		"Génie électrique Génie mécanique GE-GM",
+     		"Génie logiciel et réseaux",
+     		"Mathématiques informatique et physique MIP",
+     		"Statistiques et informatique décisionnelle",
+     		"Génie logiciel",
+     		"Qualité logiciel",
+     		" Multimédia et conception web",
+     		"Développement informatique",
+     		"Génie thermique et energétique ",
+     		"Systèmes informatiques répartis",
+     		"Administration des réseaux informatiques",
+     		"Informatique et gestion des entreprises",
+     		"Génie logiciel et réseaux",
+     		"Techniques de développement informatique",
+     		"Techniques des réseaux informatique",
+     		"Electromécanique des systèmes automatisés",
+     		"Systèmes électroniques",
+     		"Electronique automatique et télécommunication",
+     		"Biologie,Chimie,Geologie",
+     		"Science de la vie SVI",
+     		"Administration des applications informatiques",
+     		"Génie électrique informatique industrielle",
+     		"Réseaux sécurité et systèmes informatiques",
+     		"Technique du son et de l'image",
+     		"Administration des parcs informatiques",
+     		"GI-ISR",
+     		"Métier du web",
+     		"Système électronique",
+     		"Génie électrique",
+     		"Electro-technique",
+     		"technologies du web et commerce électronique",
+     		"Systèmes embarqués",
+
+     };
+ 	
+ 	double s = 0l;
+ 	String result= "";
+ 	
+ 	for (String specialite : specialites) {
+ 		try{
+     		double tempS = similarity(orgSpecialiteDeug, specialite);
+     		if( tempS > s){
+     			s = tempS;
+     			result = specialite;
+     		}
+ 		}catch(Exception e){
+ 			
+ 		}
+
+		}
+
+ 	return result;
+ }
+ 	
+     ////// Modification Specialités Licence
+ 	public static String correctSpecialiteLicence(String orgSpecialiteLicence) {
+
+         String[] specialites = {
+         		"Sciences Mathématiques et Informatiques SMI",
+         		"Mathématiques Informatique et Phusique MIP",
+         		"Systèmes Informatique et répartis",
+         		"Génie informatique",
+         		"Génie logiciel",
+         		"Informatique de gestion",
+         		"Systèmes d'information et ingénierie décisionnelle",
+         		"Sciences de la matère physique SMP",
+         		"Management des systèmes d'information",
+         		"Physiologie animale et génie biologique",
+         		"Sciences mathématiques appliquées SMA",
+         		"Ingénierie des systèmes informatiques et logiciels",
+         		"Génie logiciel",
+         		"Ingénierie informatique",
+         		"Réseaux, Sécurité et systèmes Informatiques",
+         		"Licence professionnelle d'informatique",
+         		"Métiers du net",
+         		"Licence Science et Technique",
+         		"Informatique et gestion industrielle",
+         		"Développement Informatique",
+         		"Informatique décsionnelle",
+         		"administration réseaux et sécurité des systémes d'information",
+         		"Génie informatique et mathématique",
+         		"Santé",
+         		"Génie électrique",
+         		"Réseaux et télécommunicatins",
+         		"Systèmes informatiques et logiciels",
+         		"Technologies educatives et developpement multimédia",
+         		"Systèmes d'information et génie logiciel",
+         		"Ingénierie des applications mobiles",
+         		"Ingénierie informatique électronique et automatique",
+         		"Informatique décisionnelle et statistiques",
+         		"Administration des systèmes informatiques",
+         		"Licence professionnelle métier du net",
+         		"Licence professionnelle  en informatique",
+         		"Technologies du multimédia et web",
+         		"Licence Professionnelle Développeur Java C++",
+         		"Technologie du programmation web",
+         		"Développement des systèmes d'informations et communications",
+         		"Génie électrique",
+         		"QUALITE LOGICIEL",
+         		"Développement et base de données",
+         		"Licence d'enseignement d'informatique",
+         		"Techniques des Systèmes Electroniques et Industriels",
+         		"Technologies des énergies renouvelables et de l'efficacité   énergétique",
+         		"Génie logiciel et développement web",
+         		"Administration des systèmes informatiques"
+
+         };
+     	
+     	double s = 0l;
+     	String result= "";
+     	
+     	for (String specialite : specialites) {
+     		try{
+         		double tempS = similarity(orgSpecialiteLicence, specialite);
+         		if( tempS > s){
+         			s = tempS;
+         			result = specialite;
+         		}
+     		}catch(Exception e){
+     			
+     		}
+
+ 		}
+    
+     	return result;
+ 	
+ }
+}

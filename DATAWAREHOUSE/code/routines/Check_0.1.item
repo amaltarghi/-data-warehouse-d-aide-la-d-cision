@@ -1,0 +1,262 @@
+package routines;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.Locale;
+
+public class Check {
+
+	static int err_check_academie = 0;
+	static int err_moyenne_deug = 0;
+	static int err_moyenne_licence = 0;
+	static int err_note_exam = 0;
+	static int err_anne_obtention = 0;
+	static int err_fonctionnaire = 0;
+	static int err_ddn = 0;
+
+	public static boolean check_ddn(String dateNaissance) {
+		Locale l = new Locale("fr");
+
+		List<SimpleDateFormat> knownPatterns = new ArrayList<SimpleDateFormat>();
+
+		knownPatterns.add(new SimpleDateFormat("dd/MMMM/yyyy", l));
+		knownPatterns.add(new SimpleDateFormat("d/MMMM/yyyy", l));
+		knownPatterns.add(new SimpleDateFormat("d/mm/yyyy", l));
+		knownPatterns.add(new SimpleDateFormat("dd/mm/yyyy", l));
+		knownPatterns.add(new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy"));
+		knownPatterns.add(new SimpleDateFormat("yyyy-mm-dd HH:mm:ss"));
+
+		for (SimpleDateFormat pattern : knownPatterns) {
+			try {
+				new Date(pattern.parse(dateNaissance).getTime());
+				return true;
+
+			} catch (ParseException pe) {
+			}
+		}
+		err_ddn++;
+		return false;
+	}
+	public static boolean check_moyenne_deug(String S1, String S2, String S3,
+			String S4) {
+		if (!(check_note(S1) && check_note(S2) && check_note(S3) && check_note(S4))) {
+			err_moyenne_deug++;
+			return false;
+
+		}
+		return true;
+	}
+	public static boolean check_note(String note) {
+		float n = 0;
+		try {
+			note = note.replace(',', '.');
+			n = Float.parseFloat(note);
+			if (n > 0 && n <= 20)
+				return true;
+		} catch (Exception e) {
+
+		}
+ 		return false;
+	}
+	
+	public static boolean check_moyenne_licence(String S1, String S2,
+			String S3, String S4, String S5, String S6) {
+		if (!(check_note(S1) && check_note(S2) && check_note(S3)
+				&& check_note(S4) && check_note(S5) && check_note(S6))) {
+
+			err_moyenne_licence++;
+			return false;
+		}
+
+		return true;
+	}
+	public static boolean check_note_exam(String note) {
+		if (note == null)
+			return true;
+		if (note.equals("99.99"))
+			return true;
+	float n = 0;
+	try {
+			note = note.replace(',', '.');
+			n = Float.parseFloat(note);
+			if (n >= -4 && n <= 16)
+				return true;
+		} catch (Exception e) {
+
+		}
+		err_note_exam++;
+			 return false;
+	}
+	
+	public static boolean check_academie(String academie2) {
+		String academie = academie2.toUpperCase();
+
+		if (academie.contains("CASA") || academie.contains("AIN")
+				|| academie.contains("ANFA") || academie.contains("MSIK")
+				|| academie.contains("SICK") || academie.contains("SULTAN")
+				|| academie.contains("BERNOUSSI")
+				|| academie.contains("HAY HASSANI")
+
+		)
+			return true;
+
+		if (academie.contains("MEK") || academie.contains("MÉK")
+				|| academie.contains("TAFI") || academie.contains("RACH"))
+			return true;
+		if (academie.contains("FES") || academie.contains("BOUL")
+				|| academie.contains("FÈS") || academie.contains("DBIBEGH"))
+			return true;
+
+		if (academie.contains("AGADIR") || academie.contains("SOUS")
+				|| academie.contains("OUTANANE") || academie.contains("TAR"))
+			return true;
+
+		if (academie.contains("TAZA") || academie.contains("HOCEIMA")
+				|| academie.contains("HOSSEIMA")
+				|| academie.contains("ALHOUCIMA")
+				|| academie.contains("DRIOUCH"))
+			return true;
+
+		if (academie.contains("TANGER") || academie.contains("TETOUAN")
+				|| academie.contains("LARACHE"))
+			return true;
+		if (academie.contains("NTAL") || academie.contains("JDA"))
+			return true;
+
+		if (academie.contains("ABAT") || academie.contains("TEMARA")
+				|| academie.contains("SAL"))
+			return true;
+
+		if (academie.contains("GHARB") || academie.contains("CHRARDA")
+				|| academie.contains("NITRA") || academie.contains("KACEM")
+				|| academie.contains("SIDI SLIMANE"))
+			return true;
+
+		if (academie.contains("MARRAKE") || academie.contains("RHAMNA"))
+			return true;
+
+		if (academie.contains("DOUKKALA") || academie.contains("JADIDA")
+				|| academie.contains("ABDA") || academie.contains("DOUKA")
+				|| academie.contains("SAFI"))
+			return true;
+
+		if (academie.contains("MELLAL") || academie.contains("TADLA")
+				|| academie.contains("AZILAL") || academie.contains("SRAGHNA"))
+
+			return true;
+
+		if (academie.contains("SETTAT") || academie.contains("OURDIGHA")
+				|| academie.contains("CHAOU") || academie.contains("KHOURIBGA"))
+			return true;
+
+		if (academie.contains("GUELMIM"))
+			return true;
+
+		if (academie.contains("LAAYOUNE") || academie.contains("LAGOUIRA")
+				|| academie.contains("HAMRA") || academie.contains("DAHAB"))
+			return true;
+
+		if (academie.contains("AGBOVILLE") || academie.contains("MAURITANIE")
+				|| academie.contains("BAMAKO") ||
+
+				academie.contains("TRANGER") || academie.contains("TUNISIE")
+				|| academie.contains("RIVE DROITE")
+				|| academie.contains("MORONI")
+
+		)
+			return true;
+
+		err_check_academie++;
+		return false;
+
+	}
+
+public static boolean checkEtablissementLicenceAutre(String etablissementLicence) {
+		
+		
+		
+		if (etablissementLicence==null)
+			return true;
+
+		//if (etablissementLicence.contains("fès"))
+
+		//	return true;
+	
+		String etabLicenceAutre = etablissementLicence.toUpperCase();
+		
+
+//		if (etabLicenceAutre.contains("AGADIR"))
+//
+//			return true;
+
+		if (etabLicenceAutre.contains("JURIDQUE")
+				|| etabLicenceAutre.contains("FSJES"))
+			return true ;
+
+			if (etabLicenceAutre.contains("FACULTE DES SCIENCES")
+					|| etabLicenceAutre.contains("FSSM")
+					|| (etabLicenceAutre.contains("ACULTE ") || etabLicenceAutre
+							.contains(" DHAR")))
+				return true;
+
+		if (etabLicenceAutre.contains("PLU")
+				|| etabLicenceAutre.contains("POLY"))
+			return true;
+
+		if (etabLicenceAutre.contains("COLE NATIONAL ")
+				|| etabLicenceAutre.contains("INSEA "))
+			return true;
+
+		if (etabLicenceAutre.contains("FST") )
+			return true;
+		if (etabLicenceAutre.contains("EST"))
+			return true;
+
+		if (etabLicenceAutre.contains("ENS")
+				|| etabLicenceAutre.contains("NORMAL"))
+
+			return true;
+
+		if (etabLicenceAutre.contains("EFET"))
+
+			return true;
+
+		return false;
+
+	}
+
+public static boolean check_etab_deug_autre(String etablissementDeug) {
+	if (etablissementDeug==null)
+		return true;
+		String etabDeugAutre = etablissementDeug.toUpperCase();
+		
+	
+		 if (etabDeugAutre.contains("ISTA") || etabDeugAutre.contains("OFPPT") || etabDeugAutre.contains("institut") )
+			 return true;
+		 if (etabDeugAutre.contains("FACULTE DES") || etabDeugAutre.contains("FSDM") || (etabDeugAutre.contains("FACULTE DES SCIENCES") || etabDeugAutre.contains("FSSM")  || etabDeugAutre.contains("DHAR") ) )
+			 return true;
+		 if (etabDeugAutre.contains("FACULTE PLU") )
+			 return true;
+		 if (etabDeugAutre.contains("BTS") || etabDeugAutre.contains("LYC") || etabDeugAutre.contains("BREVET"))
+			 return true;
+		 if (etabDeugAutre.contains("ENSET") || etabDeugAutre.contains("ECOLE NORMALE SUPERIEURE DE "))
+			 return true;
+		 if (etabDeugAutre.contains("ENSAM") )
+			 return true;
+		 if(etabDeugAutre.contains("ENS") || etabDeugAutre.contains("ECOLE NORMAL"))
+			 return true;
+		 if(etabDeugAutre.contains("EST"))
+			 return true;
+		 if(etabDeugAutre.contains("FST"))
+			 return true;
+		 if(etabDeugAutre.contains("CPGE") || (etabDeugAutre.contains("CLASSE")))
+			 return true;
+	
+	
+	return false; }
+
+
+}

@@ -1,0 +1,933 @@
+package routines;
+
+
+public class Module {
+
+    
+	public static String getModule(String module2) {
+    	String module=module2.toUpperCase();
+    	
+    	if((module.contains("ANA")&& module.contains("ALG")&& module.contains("3"))||(module.matches
+
+(".*ANA.*III.*ALG.*II.*")&& !module.contains("ALG")))
+    	return "ALGEBRE 2 / ANALYSE 3";
+
+if(module.contains("ANA")&& module.contains("ALG")&& module.contains("4"))
+    	return "ALGEBRE 2 / ANALYSE 4";
+    	
+    	if(module.contains("ANA")&& module.contains("STAT"))
+        	return "ANALYSE NUMERIQUE / STATISTIQUE ET PROBABILITE";
+    	
+    	if(module.contains("ANAL")&& module.contains("ALG")&& module.contains("3"))
+    	return "ALGEBRE 2 / ANALYSE 3";
+
+if(module.contains("BAS")&& !module.contains("STAT"))
+		return "PROBABILITES STATISTIQUES";
+    	
+    	if(module.contains("ANAL")&& module.contains("STAT"))
+        	return "ANALYSE NUMERIQUE / STATISTIQUE ET PROBABILITE";
+    	
+	if(module.matches(".*LC.*4.*INFO.*4.*")||module.matches(".*LC([^(\n)])*IV([^\n])*INFO([^\n])*IV([^\n])*$")||module.matches(".*LC([^(\n,I)])*INFO.*4.*")||module.matches(".*LANG.*4.*INFO.*4.*")||module.matches(".*LANG([^(\n)])*IV([^\n])*INFO([^\n])*IV([^\n])*$")||module.matches(".*LANG([^(\n,I)])*INFO.*4.*"))
+        	return "LANGUE ET INFORMATIQUE 4";
+
+	if(module.matches(".*LC.*3.*INFO.*4.*")||module.matches(".*LC([^\n])*III([^\n])*INFO([^\n])*IV([^\n])*$")||module.matches(".*LANG.*3.*INFO.*4.*")||module.matches(".*LANG([^\n])*III([^\n])*INFO([^\n])*IV([^\n])*$"))
+        	return "LANGUE 3 ET INFORMATIQUE 4";
+
+	if(module.matches(".*LC.*4.*INFO.*3.*")||module.matches(".*LC([^\n])*IV([^\n])*INFO([^\n])*III([^\n])*$")||module.matches(".*LANG.*4.*INFO.*3.*")||module.matches(".*LANG([^\n])*IV([^\n])*INFO([^\n])*III([^\n])*$"))
+        	return "LANGUE 4 ET INFORMATIQUE 3";
+
+	if(module.matches(".*LC.*3.*INFO.*3.*")||module.matches(".*LC([^\n])*III([^\n])*INFO([^\n])*III([^\n])*$")||module.matches(".*LC([^(\n,I)])*INFO.*3.*")||module.matches(".*LANG.*3.*INFO.*3.*")||module.matches(".*LANG([^\n])*III([^\n])*INFO([^\n])*III([^\n])*$")||module.matches(".*LANG([^(\n,I)])*INFO.*3.*"))
+        	return "LANGUE ET INFORMATIQUE 3";
+
+	if(module.matches(".*LC.*2.*INFO.*3.*")||module.matches(".*LC([^\n])*II([^\n])*INFO([^\n])*III([^\n])*$")||module.matches(".*LANG.*2.*INFO.*3.*")||module.matches(".*LANG([^\n])*II([^\n])*INFO([^\n])*III([^\n])*$"))
+        	return "LANGUE 2 ET INFORMATIQUE 3";
+
+	if(module.matches(".*LC.*3.*INFO.*2.*")||module.matches(".*LC([^\n])*III([^\n])*INFO([^\n])*II([^\n])*$")||module.matches(".*LANG.*3.*INFO.*2.*")||module.matches(".*LANG([^\n])*III([^\n])*INFO([^\n])*II([^\n])*$"))
+        	return "LANGUE 3 ET INFORMATIQUE 2";
+    	
+	if(module.matches(".*LC.*2.*INFO.*2.*")||module.matches(".*LC([^\n])*II([^\n])*INFO([^\n])*II([^\n])*$")||module.matches(".*LC([^(\n,I)])*INFO.*2.*")||module.matches(".*LANG.*2.*INFO.*2.*")||module.matches(".*LANG([^\n])*II([^\n])*INFO([^\n])*II([^\n])*$")||module.matches(".*LANG([^(\n,I)])*INFO.*2.*"))
+		return "LANGUE ET INFORMATIQUE 2";
+
+	if(module.matches(".*LC.*2.*INFO.*1.*")||module.matches(".*LC.*2.*INFO([^(\n,II)])*$")||module.matches(".*LC([^\n])*II([^\n])*INFO([^\n])*$")||module.matches(".*LANG.*2.*INFO.*1.*")||module.matches(".*LANG.*2.*INFO([^(\n,II)])*$")||module.matches(".*LANG([^\n])*II([^\n])*INFO([^\n])*$"))
+		return "LANGUE 2 ET INFORMATIQUE 1";
+
+	if(module.matches(".*LC.*1.*INFO.*2.*")||module.matches(".*LC([^\n])*INFO([^\n])*II([^\n])*$")||module.matches(".*LC([^\n])*INFO.*2.*")||module.matches(".*LANG.*1.*INFO.*2.*")||module.matches(".*LANG([^\n])*INFO([^\n])*II([^\n])*$")||module.matches(".*LANG([^\n])*INFO.*2.*"))
+		return "LANGUE 1 ET INFORMATIQUE 2";
+
+	if(module.matches(".*LANG([^\n])*INFO([^\n])*")||module.matches(".*LC([^\n])*INFO([^\n])*"))
+		return "LANGUE ET INFORMATIQUE 1";
+
+    	if(module.matches(".*LANG([^(\n,I)])*INFO([^(\n,I)])*$")||module.matches(".*LC([^(\n,I)])*INFO([^(\n,I)])*$"))
+    		return "LANGUE ET INFORMATIQUE";
+
+
+	
+	if(module.matches(".*LANG.*1.*MET.*")||module.matches(".*LC.*1.*MET.*"))
+		return "LANGUE 1 ET METHODOLOGIE";
+
+	if(module.matches(".*LANG([^\n])*MET.*")||module.matches(".*LC([^\n])*MET.*"))
+		return "LANGUE 1 ET METHODOLOGIE";
+
+	if(module.matches(".*LANG.*2.*MET.*")||module.matches(".*LC.*2.*MET.*"))
+		return "LANGUE 2 ET METHODOLOGIE";
+
+	if((module.contains("LC")||module.contains("LAN")) && module.contains("4") && !module.contains("SYS") && !module.contains("MET") && !module.contains("INFO") && !module.contains("MAP") && !module.contains("COMP"))
+		return "LANGUE 4";
+
+	if((module.contains("LC")||module.contains("LAN")) && module.contains("3") && !module.contains("SYS") && !module.contains("MET") && !module.contains("INFO") && !module.contains("MAP") && !module.contains("COMP"))
+		return "LANGUE 3";
+
+	if((module.contains("LC")||module.contains("LAN")) && module.contains("2") && !module.contains("SYS") && !module.contains("MET") && !module.contains("INFO") && !module.contains("MAP") && !module.contains("COMP"))
+		return "LANGUE 2";
+
+	if((module.contains("LC")||module.contains("LAN")) && module.contains("1") && !module.contains("SYS") && !module.contains("MET") && !module.contains("INFO") && !module.contains("MAP") && !module.contains("COMP"))
+		return "LANGUE 1";
+	
+	if((module.contains("LC")||module.contains("LAN")) && !module.contains("SYS") && !module.contains("MET") && !module.contains("INFO") && !module.contains("MAP") && !module.contains("COMP") && !module.contains("GAG") && !module.contains("1")&& !module.contains("2")&& !module.contains("3")&& !module.contains("5"))
+					return "LANGUE";
+	if(module.contains("MAP"))
+		return "MAPLE";
+	
+	if(module.contains("MERIS"))
+		return "MERISE";
+
+	if(module.contains("LAN") && module.contains("SYS"))
+		return "LANGUE ET SYSTEME D'EXPLOITATION";
+
+	
+
+    	if(module.matches(".*EL([^\n])*MAG([^\n])*OPT.*"))
+		return "ELECTROMAGNETISME ET OPTIQUE";
+
+	if(module.matches(".*ELCTRON([^\n])*OPT.*"))
+		return "ELCTRONIQUE ET OPTIQUE";
+
+    	if(module.matches(".*CHI([^\n])*MIN([^\n])*ORG.*"))
+		return "CHIMIE MINERALE ET CHIMIE ORGANIQUE";
+
+	if(module.matches(".*CHI([^\n])*GEN.*1.*"))
+		return "CHIMIE GENERALE 1";
+
+	if(module.matches(".*CHI([^\n])*GEN.*2.*"))
+		return "CHIMIE GENERALE 2";
+
+	if(module.matches(".*CHI([^\n])*GEN([^\n])*$") && !module.contains("ORG") && !module.contains("MIN")&& !module.contains("ATO"))
+		return "CHIMIE GENERALE";
+
+
+	if(module.contains("ORG") && module.contains("GEN")&& module.contains("CHI"))
+		return "CHIMIE GENERALE ET ORGANIQUE";
+
+	if(module.contains("MIN") && module.contains("GEN")&& module.contains("CHI"))
+		return "CHIMIE GENERALE ET MINERALE";
+
+	if(module.contains("ATO") && module.contains("GEN")&& (module.contains("CHI")||module.contains("IMI")))
+		return "CHIMIE GENERALE ET ATOMISTIQUE";
+
+	if(module.matches(".*CHIMIE"))
+		return "CHIMIE";
+	
+
+	if(module.contains("PR") && module.contains("OBJ")&& module.contains("VAN")&& !module.contains("UML") && !module.contains("CON"))
+		return "PROGRAMMATION ORIENTEE OBJET AVANCEE";
+
+	if(module.contains("PR") && module.contains("OBJ") && !module.contains("CON")&& !module.contains("VAN"))
+		return "PROGRAMMATION ORIENTEE OBJET";
+
+	if((module.contains("PR") && module.contains("OBJ") && module.contains("CON")&& !module.contains("VEN"))||(((module.contains("PR") && module.contains("OBJ"))||module.contains("POO"))&& module.contains("UML"))||(module.contains("GEN") && module.contains("POO")))
+		return "PROGRAMMATION ET CONCEPTION ORIENTEE OBJET";
+
+	if(module.contains("PR") && module.contains("OBJ") && module.contains("CON")&& module.contains("VEN"))
+		return "CONCEPTION ORIENTEE OBJET ET PROGRAMATION EVENEMENTIELLE";
+
+	if(module.contains("TER") && module.contains("OB") )
+		return "PROGRAMMATION ORIENTEE OBJET /INTERFACE HOMME-MACHINE";
+
+	if(module.contains("ORIEN") && module.contains("THE") )
+		return "PROGRAMMATION ORIENTEE OBJET ET THEORIE DES LANGUAGES";
+
+	if( module.contains("OBJ") && module.contains("CON") && !module.contains("PR"))
+		return "CONCEPTION ORIENTEE OBJET";
+
+	if(( module.contains("OBJ") && module.contains("STRU") && module.contains("PR"))||(module.contains("POO") && module.contains("STRU")))
+		return "PROGRAMMATION ORIENTEE OBJET ET STRUCTURES DE DONNEES";
+
+	if((module.contains("PR") && module.contains("WEB") && module.contains("AV"))||(module.contains("TECH") && module.contains("WEB") && module.contains("AV"))||(module.contains("DEV") && module.contains("WEB") && module.contains("AV")&& !module.contains("JAV")))
+		return "WEB AVANCEE";
+
+if((module.contains("PR") && module.contains("OBJ")|| module.contains("POO") )&& !module.contains("AV"))
+		return "PROGRAMMATION ORIENTEE OBJET";
+if((module.contains("PR") && module.contains("OBJ")|| module.contains("POO") )&& module.contains("AV"))
+		return "PROGRAMMATION ORIENTEE OBJET AVANCEE";
+
+	if(module.contains("WEB") && module.contains("MEDIA"))
+		return "WEB ET MULTIMEDIA";
+
+	if(module.contains("WEB") && module.contains("GL")&& module.contains("PROG"))
+		return "GENIE LOGICIEL ET WEB";
+
+	if(module.contains("WEB") && module.contains("BA")&& module.contains("DO"))
+		return "BASES DE DONNEES ET WEB";
+
+	if(module.contains("WEB") && module.contains("RES"))
+		return "RESEAUX ET WEB";
+
+	if(module.contains("DEV") && module.contains("WEB") && module.contains("AV") && module.contains("JAV"))
+		return "WEB ET JAVA AVANCEE";
+
+	if(module.contains("WEB") && module.contains("MOB"))
+		return "WEB POUR MOBILE";
+
+	if(module.contains("WEB") && module.contains("REP"))
+		return "ARCHITECTURE REPARTIE / WEB SERVICE";
+	
+	if(module.contains("INFO") && module.contains("DECI") && module.contains("WEB"))
+		return "INFORMATIQUE DECISIONNELLE ET TECHNOLOGIE WEB";
+
+	if(module.contains("DEV") && module.contains("WEB") && module.contains("TIER"))
+		return "ARCIHTECTURE N-TIERS ET WEB";
+
+	if(module.contains("DEV") && module.contains("WEB") && module.contains("COMPIL"))
+		return "WEB ET COMPILATION";
+
+	if(!module.contains("THEO") && !module.contains("WEB") && module.contains("COMPIL"))
+		return "COMPILATION";
+
+	if(module.contains("THEO") && module.contains("COMPIL"))
+		return "THEORIE DE LANGUAGE ET COMPILATION";
+
+	if(module.contains("SYS") && module.contains("WEB") && module.contains("INFO"))
+		return "SYSTEME D'INFORMATION ET WEB";
+
+
+	if(module.contains("WEB") && module.contains("TER"))
+		return "INTERFACE H/M & WEB MULTIMEDIA";
+
+	if(module.contains("WEB") && module.contains("E-COM"))
+		return "WEB / E-COMMERCE";
+
+	if(module.contains("WEB") && !module.contains("COM") && !module.contains("TIER") && !module.contains("SYS") && !module.contains("REP") && !module.contains("MOB") && !module.contains("RES") && !module.contains("TER") && !module.contains("AV")&& !module.contains("JAV"))
+		return "WEB";
+
+	if(module.contains("EB") && module.contains("DY"))
+		return "WEB";
+
+	if(module.contains("WAB"))
+		return "WEB";
+
+	if(module.contains("JA") && module.contains("J2EE"))
+		return "JAVA AVANCEE ET J2EE";
+
+	if(module.contains("J2EE") && !module.contains("JA"))
+		return "J2EE";	
+	
+	if(module.contains("GES") && module.contains("PROJ"))
+		return "GESTION DE PROJET";
+	
+	if(module.contains("PROJ")&& !module.contains("GES")&& !module.contains("EXP")&& !module.contains("ARCHI")&& !module.contains("COND") && !module.contains("UNIX"))
+		return "PROJET DE FIN D'ETUDES";
+	
+	if(module.contains("SYS") && module.contains("PROJ")&& module.contains("EXP"))
+		return "SYSTEME D'EXPLOITATION ET PROJET";
+	
+	if(module.contains("ARCH") && module.contains("PROJ"))
+		return "ARCHITECTURE DES ORDINATEURS ET PROJECT EN ASSEMBLEUR";
+
+
+if(module.contains("ADMIN") && module.contains("UNIX"))
+		return "ADMINISTRATION SYSTEME UNIX";
+
+
+if(module.contains("ADMIN") && module.contains("LINUX"))
+		return "ADMINISTRATION SYSTEME LINUX";
+
+if(module.contains("ADMIN") && module.contains("RES"))
+		return "ADMINISTRATION RESEAUX";
+
+
+if((module.contains("ADMIN") && module.contains("BASE"))||(module.contains("ADMIN") && module.contains("DON"))||(module.contains("ADMIN") && module.contains("BD")))
+		return "ADMINISTRATION DES BASES DE DONNEES";
+	
+
+if(module.contains("ALGO") && module.contains("PROG"))
+	return "ALGORITHMIQUE ET PROGRAMMATION";
+
+if(module.contains("ALGO") && module.contains("STRUCT"))
+	return "ALGORITHMIQUE ET STRUCTURES DES DONNEES";
+
+
+
+if(module.contains("SYS") && module.contains("EXP")&& module.contains("2")&& !module.contains("RES"))
+		return "SYSTEMES D'EXPLOITATION 2";
+
+if(module.contains("SYS") && module.contains("EXP")&& !module.contains("2")&& !module.contains("RES"))
+		return "SYSTEMES D'EXPLOITATION 1";
+
+
+if(module.contains("SYS") && module.contains("EXP")&& !module.contains("2")&& module.contains("RES"))
+		return "SYSTEMES D'EXPLOITATION ET RESEAUX";
+	
+if(module.matches(".*LY.*NUM.*2.*")&& module.contains("CALC"))
+	return "ANALYSE NUMERIQUE 2 / LOGICIELS DE CALCUL SCIENTIFIQUE";
+
+if(module.matches(".*ANA.*NUM.*2.*")&& !module.contains("CALC"))
+	return "ANALYSE NUMERIQUE 2";
+
+if(module.matches(".*ANA.*3.*")&& !module.contains("ALG")&& module.contains("NUM"))
+	return "MATHEMATIQUES DISCRETES ET ANALYSE NUMERIQUE 3";
+
+if((module.matches(".*ANA.*3.*")&& !module.contains("ALG")&& !module.contains("NUM"))||(module.matches
+
+(".*ANA.*III.*")&& !module.contains("ALG")))
+	return "ANALYSE 3";
+
+if((module.matches(".*ANA.*2.*")&& !module.contains("CALC")&& !module.contains("NUM"))||(module.matches
+
+(".*ANA.*II.*")&& !module.contains("ALG")))
+	return "ANALYSE 2";
+
+if(module.matches(".*ANA.*NUM.*DON.*"))
+	return "ANALYSE NUMERIQUE ET ANALYSE DES DONNEES";
+
+if((module.matches(".*ANA.*IV.*")&& !module.contains("QUIV"))||(module.matches(".*ANA.*4.*")&& !
+
+module.contains("ALG")))
+	return "ANALYSE 4";
+
+if(module.matches(".*ANA.*1.*")&& !module.contains("NUM"))
+	return "ANALYSE 1";
+
+
+if(module.matches(".*SAL.*1.*")||module.matches(".*SAL([^\n])*$"))
+		return "TRANSVERSALE 1";
+
+if(module.matches(".*SAL.*2.*"))
+		return "TRANSVERSALE 2";
+
+if(module.matches(".*SAL.*3.*")||module.matches(".*SAL.*III.*"))
+		return "TRANSVERSALE 3";
+
+if(module.matches(".*SAL.*4.*"))
+		return "TRANSVERSALE 4";
+
+if(module.matches(".*PHY.*5.*"))
+		return "PHYSIQUE 5";
+
+if(module.matches(".*PHY.*4.*"))
+		return "PHYSIQUE 4";
+
+if(module.matches(".*PHY.*3.*")||module.matches(".*PHY.*III.*")||module.matches(".*PHY.*LLL.*"))
+		return "PHYSIQUE 3";
+
+if(module.matches(".*PHY.*2.*")||module.matches(".*PHY.*II.*")||module.matches(".*PHY.*LL.*"))
+		return "PHYSIQUE 2";
+
+if(module.matches(".*PHY.*1.*")||module.matches(".*PHY([^\n])*$"))
+		return "PHYSIQUE 1";
+
+
+if(module.matches(".*MATH.*2.*")&& !module.contains("PROG")&& !module.contains("INFO"))
+		return "MATHEMATIQUES 2";
+
+
+if((module.matches(".*MATH.*1.*")||module.matches(".*MATH([^\n])*$"))&& !module.contains("PROG")&& !
+
+module.contains("INFO"))
+		return "MATHEMATIQUES";
+
+
+if(module.matches(".*MATH.*")&& (module.contains("PROG")|| module.contains("INFO")))
+		return "MATHEMATIQUES POUR INFORMATIQUE";
+
+if(module.contains("TRAI")&& module.contains("IM"))
+		return "TRAITEMENT D'IMAGES";
+
+if(module.contains("TRAI")&& module.contains("SI"))
+		return "TRAITEMENT DE SIGNAL";
+
+if(module.contains("PFE")&& module.contains("ENTR"))
+		return "PFE ET ENTREPRENARIAT";
+
+if(module.contains("PFE")&& !module.contains("ENTR"))
+		return "PFE";
+
+
+if(module.matches(".*ARC.*OR.*TE.*"))
+		return "ARCHITECTURE DES ORDINATEURS";
+
+if(module.contains("ARC")&& module.contains("RES"))
+		return "ARCHITECTURE RESEAUX";
+
+if(module.contains("ARCHI")&& module.contains("SYS"))
+		return "ARCHITECTURE DES SYSTEMES INFORMATIQUES";
+
+
+if((module.contains("BAS")||module.contains("DB")||module.contains("BD"))&& !module.contains("REP")&& !module.contains("AV")&& !module.contains("SYS"))
+		return "BASES DE DONNEES";
+
+if((module.contains("BAS")||module.contains("DB")||module.contains("BD"))&& module.contains("SYS"))
+		return "SYSTEME D'INFORMATIONS ET BASES DE DONNEES";
+
+if((module.contains("BAS")||module.contains("DB")||module.contains("BD"))&& module.contains("REP"))
+		return "BASES DE DONNEES REPARTIES";
+
+if((module.contains("BAS")||module.contains("DB")||module.contains("BD"))&& module.contains("AV"))
+		return "BASES DE DONNEES AVANCEES";
+
+
+if(module.contains("COMPTA")&& module.contains("GES"))
+		return "COMPTABILITE DE GESTION ET GESTION FINANCIERE DE L'ENTRPRISE";
+
+if(module.contains("COMPTA")&& !module.contains("GES"))
+		return "COMPTABILITE";
+
+
+if(module.contains("CEP")&& !module.contains("OR"))
+		return "CONCEPTION DES APPLICATIONS INFORMATIONS";
+
+
+if(module.contains("RES")&& module.contains("AU") && !module.contains("EXP"))
+		return "RESEAUX";
+
+if(module.contains("METH")&& module.contains("LOG")&& !module.contains("INFO")&& !module.contains("LANG"))
+		return "METHODOLOGIE";
+
+if(module.contains("UML")|| module.contains("CEP"))
+		return "UML";
+
+if(module.contains("PRO") && module.contains("MOB"))
+	return "PROGRAMMATION MOBILE";
+
+if(module.contains("PRO") && module.contains("OR"))
+	return "PROGRAMMATION ORIENTEE OBJET";
+
+if(module.contains("PRO") && module.contains("C"))
+	return "PROGRAMMATION C";
+
+if(module.contains("PRO") && !module.contains("C")&& !module.contains("OR")&& !module.contains("MOB")&& !module.contains("RES"))
+	return "PROGRAMMATION";
+
+if(module.contains("ARC") &&(module.contains("OR")||module.contains("ASS")))
+		return "ARCHITECTURE DES ORDINATEURS";
+
+if(module.contains("ADMIN") && module.contains("OR"))
+		return "ADMINISTRATION ORACLE";
+
+if(module.contains("ARC") && module.contains("EXP"))
+		return "ARCHITECTURE D'EXPLOIATION";
+
+if(module.contains("ARC") && module.contains("REP"))
+		return "ARCHITECTURE REPARTIE";
+
+if(module.contains("DEV") && !module.contains("WEB") && !module.contains("PED")&& !module.contains("MULT"))
+		return "DEVELOPEMENT INFORMATIQUE";
+
+if(module.contains("DEV") && module.contains("PED"))
+		return "DEVELOPEMENT PEDAGOGIQUE";
+
+if(module.contains("DEV") && module.contains("MULT"))
+		return "DEVELOPEMENT MULTIMEDIA";
+
+
+if(module.contains("SYS") && module.contains("INFO")&& !module.contains("WEB")&& !module.contains("DEC"))
+		return "SYSTEME D'INFORMATION";
+
+if(module.contains("SYS") && module.contains("INFO")&& module.contains("WEB")&& !module.contains("DEC"))
+		return "SYSTEME D'INFORMATION ET WEB";
+
+
+if(module.contains("SYS") && module.contains("INFO")&& !module.contains("WEB")&& module.contains("DEC"))
+		return "SYSTEME D'INFORMATION DECISIONNEL";
+
+
+if(module.contains("STRU") && module.contains("DON"))
+		return "STRUCTURE DE DONNEES";
+
+if(module.contains("SEC"))
+		return "SECURITE";
+
+if(module.contains("EDP"))
+		return "EDP";
+
+if(module.contains("THER"))
+		return "THERMODYNAMIQUE";
+
+
+if(module.contains("SYS") && module.contains("REP"))
+	return "SYSTEME REPARTIE";
+
+if(module.contains("SYS") && module.contains("PLOI"))
+	return "SYSTEME D'EXPLOITATION";
+
+if(module.contains("SYS") && module.contains("DMI"))
+	return "ADMINISTRATION DES SYSTEMES";
+
+if(module.contains("COM") && module.contains("CA")&& module.contains("INFO"))
+	return "COMMUNICATION ET INFORMATIQUE";
+
+if(((module.contains("COM") && module.contains("CA"))||module.contains("TEC"))&& !module.contains("INFO"))
+	return "COMMUNICATION";
+
+if(module.contains("STAT") && !module.contains("PRO"))
+	return "STATISTIQUES";
+
+if(module.contains("MOB") && !module.contains("GEO"))
+	return "MOBILITE ET GEOLOCALISATION";
+
+if(module.contains("TEC") && module.contains("INF"))
+	return "LANGUE ET INFORMATIQUE";
+if(module.contains("TEC") && module.contains("INF")&& module.contains("2"))
+		return "LANGUE ET INFORMATIQUE 2";
+if(module.contains("TEC") && module.contains("INF")&& module.contains("3"))
+		return "LANGUE ET INFORMATIQUE 3";
+if(module.contains("TEC") && module.contains("INF")&& module.contains("4"))
+		return "LANGUE ET INFORMATIQUE 4";
+if(module.contains("ANAL") && !module.contains("NUM"))
+		return "ANALYSE";
+
+if(module.contains("MEC"))
+		return "MECANIQUE";
+if((module.matches(".*ALGO.*III.*"))||(module.contains("ALGO") && module.contains("3")))
+return "ALGORITHMIQUE 3";
+
+if((module.matches(".*ALGO.*II.*"))||(module.contains("ALGO") && module.contains("2")))
+return "ALGORITHMIQUE 2";
+
+
+if((module.matches(".*ALGO([^\n,I])*$"))||(module.contains("ALGO") && module.contains("1")))
+return "ALGORITHMIQUE 1";
+
+if((module.matches(".*ALGE.*III.*"))||(module.contains("ALGE") && module.contains("3")))
+return "ALGEBRE 3";
+
+if((module.matches(".*ALGE.*II.*"))||(module.contains("ALGE") && module.contains("2")))
+return "ALGEBRE 2";
+
+
+if((module.matches(".*ALGE.*IV.*"))||(module.contains("ALGE") && module.contains("4")))
+return "ALGEBRE 4";
+
+if((module.matches(".*ALGE([^\n])*$"))||(module.contains("ALGE") && module.contains("1")))
+		return "ALGEBRE";
+
+
+if(module.contains("ANGL"))
+	return "LANGUE";
+
+if(module.contains("STAG"))
+	return "STAGE";
+
+if(module.contains("ELE")&&(module.contains("CI")||module.contains("RI")))
+	return "ELECTRICITE";
+
+if(module.contains("ELECTRON"))
+	return "ELECTRONIQUE";
+if(module.contains("ELE")&&module.contains("MA"))
+	return "ELECTROMAGNETISME";
+
+if(module.contains("INFOG"))
+	return "INFOGRAPHIE";
+
+
+if(module.contains("GEST"))
+	return "GESTION D'ENTREPRISE";
+
+if(module.contains("OPTI"))
+	return "OPTIQUE";
+
+if(module.contains("CRYP"))
+	return "CRYPTOGRAPHIE";
+
+
+if(module.contains("GENI"))
+	return "GENIE LOGICIEL";
+
+if(module.contains("MANA"))
+	return "MANAGEMENT D'ENTREPRISE";
+
+if(module.contains("RECH")||module.contains("OPER"))
+	return "RECHERCHE OPRERATIONNELLE";
+
+
+if(module.contains("ENTRE")||module.matches(".*PT.*1.*")||module.matches(".*PT.*2.*"))
+	return "ENTREPRENARIAT";
+
+if(module.contains("ANA")&&module.contains("NUM")&&module.contains("2"))
+	return "ANALYSE NUMERIQUE 2";
+
+if(module.contains("ANA")&&module.contains("NUM")&& !module.contains("2"))
+	return "ANALYSE NUMERIQUE";
+
+if(module.contains("RIT")&& !module.contains("RES")&& !module.contains("STRUC"))
+	return "ALGORITHMIQUE";
+
+if(module.contains("RIT")&& module.contains("STRUC"))
+	return "ALGORITHMIQUE ET STRUCTURES DE DONNEES";
+
+if(module.contains("IMA"))
+	return "TRAITEMENT D'IMAGES";
+
+    	return module;
+    	
+    }
+	private static double similarity(String s1, String s2) {
+		String longer = s1, shorter = s2;
+		if (s1.length() < s2.length()) {
+			longer = s2;
+			shorter = s1;
+		}
+		int longerLength = longer.length();
+		if (longerLength == 0) {
+			return 1.0;
+		}
+		return (longerLength - editDistance(longer, shorter))
+				/ (double) longerLength;
+
+	}
+
+	private static int editDistance(String s1, String s2) {
+		s1 = s1.toLowerCase();
+		s2 = s2.toLowerCase();
+
+		int[] costs = new int[s2.length() + 1];
+		for (int i = 0; i <= s1.length(); i++) {
+			int lastValue = i;
+			for (int j = 0; j <= s2.length(); j++) {
+				if (i == 0)
+					costs[j] = j;
+				else {
+					if (j > 0) {
+						int newValue = costs[j - 1];
+						if (s1.charAt(i - 1) != s2.charAt(j - 1))
+							newValue = Math.min(Math.min(newValue, lastValue),
+									costs[j]) + 1;
+						costs[j - 1] = lastValue;
+						lastValue = newValue;
+					}
+				}
+			}
+			if (i > 0)
+				costs[s2.length()] = lastValue;
+		}
+		return costs[s2.length()];
+	}
+
+	public static String correctModule(String orgModule) {
+
+		String[] modules = { "ACTIVITES DES ORGANISATIONS",		
+				"ADMINISTRATION DES BASES DE DONNEES",		
+				"ADMINISTRATION DES SYSTEMES",		
+				"ADMINISTRATION SERVEUR",		
+				"ADMINISTRATION RESEAUX",		
+				"ADMINISTRATION SYSTEME LINUX",		
+				"ADMINISTRATION SYSTEME UNIX",	
+				"ALGEBRE",	
+				"ALGEBRE 1",
+				"ALGEBRE 2",		
+				"ALGEBRE 2 / ANALYSE 3",		
+				"ALGEBRE 2 / ANALYSE 4",		
+				"ALGEBRE 3",		
+				"ALGEBRE 4",		
+				"ALGORITHMIQUE",		
+				"ALGORITHMIQUE ET PROGRAMMATION",		
+				"ALGORITHMIQUE ET STRUCTURES DES DONNEES",		
+				"ALGORITHMIQUE 1",		
+				"ALGORITHMIQUE 2",		
+				"ANALYSE",		
+				"ANALYSE NUMERIQUE",		
+				"ANALYSE NUMERIQUE / STATISTIQUE ET PROBABILITE",		
+				"ANALYSE NUMERIQUE ET ANALYSE DES DONNEES",		
+				"ANALYSE NUMERIQUE 2",		
+				"ANALYSE 1",		
+				"ANALYSE 2",		
+				"ANALYSE 3",		
+				"ANALYSE 4",		
+				"ANDROID",		
+				"APPLICATION CLIENT/SERVER",		
+				"APPLICATION HYPERMEDIAS",		
+				"ARABE",		
+				"ARCHITECTURE DES ORDINATEURS",		
+				"ARCHITECTURE DES ORDINATEURS ET PROJECT EN ASSEMBLEUR",		
+				"ARCHITECTURE DES SYSTEMES INFORMATIQUES",		
+				"ARCHITECTURE REPARTIE / WEB SERVICE",		
+				"ARCHITECTURE RESEAUX",		
+				"ARCIHTECTURE N-TIERS ET WEB",		
+				"ATELIER GL",		
+				"BASES DE DONNEES",		
+				"BASES DE DONNEES AVANCEES",		
+				"BASES DE DONNEES REPARTIES",		
+				"BIOLOGIE GENERALE ET CELLULAIRE",		
+				"C++",		
+				"COMPILATION  ",		
+				"CHIMIE",		
+				"CHIMIE GENERALE",		
+				"CHIMIE GENERALE ET ATOMISTIQUE",		
+				"CHIMIE GENERALE ET MINERALE",		
+				"CHIMIE GENERALE ET ORGANIQUE",		
+				"CHIMIE GENERALE 1",		
+				"CHIMIE GENERALE 2",		
+				"CHIMIE MENIRALE ET ORGANIQUE",		
+				"CHIMIE MINERALE ET CHIMIE ORGANIQUE",		
+				"CIRCUITS LOGIQUES",		
+				"C++/JAVA",		
+				"CLASSES PREPARATOIRES - CPGE (FILIERE: MP)",		
+				"CLASSES PREPARATOIRES - CPGE (FILIERE: MPSI)",		
+				"COMMUNICATION",		
+				"COMMUNICATION ET INFORMATIQUE",		
+				"COMPTABILITE",		
+				"COMPTABILITE DE GESTION ET GESTION FINANCIERE DE L'ENTRPRISE",		
+				"CONCEPTION DES APPLICATIONS INFORMATIQUES",		
+				"CONCEPTION ORIENTEE OBJET",		
+				"CONCEPTION ORIENTEE OBJET ET PROGRAMATION EVENEMENTIELLE",		
+				"CONNAISSANCE ET COMPETENCES GENERALES 1",		
+				"CONNAISSANCE ET COMPETENCES GENERALES 2",		
+				"C.O.O",		
+				"CRYPTOGRAPHIE",		
+				"CULTURE GENERALE 1",		
+				"CULTURE GENERALE 2",		
+				"CULTURE GENERALE 3",		
+				"CYBER-OUTILS",		
+				"DESIGN DES SYSTEMES INTERACTIFS",		
+				"DEVELOPEMENT INFORMATIQUE",		
+				"DEVELOPEMENT MULTIMEDIA",		
+				"DEVELOPEMENT PEDAGOGIQUE",		
+				"DEVELOPPEMENT WEB ET COMPLIATION",		
+				"DIDACTIQUE DES SCIENCES",		
+				"DROIT",		
+				"E-COMMERCE",		
+				"ECONOMIE",		
+				"EDP",		
+				"EJEE",		
+				"E-LEARNING",		
+				"ELECTRICITE",		
+				"ELECTROMAGNETISME",		
+				"ELECTROMAGNETISME ET OPTIQUE",		
+				"ELECTRONIQUE",		
+				"ENTREPRENARIAT",		
+				"ENVIRONEMMENT ECONOMIQUE ET JURIDIQUE",		
+				"ENVIRONNEMENT ECONOMIQUE",		
+				"ENVIRONNEMENT ECONOMIQUE 1",		
+				"ENVIRONNEMENT ECONOMIQUE 2",		
+				"ERP/PYTHON",		
+				"FORMATION HUMAINE",		
+				"FRANCAIS",		
+				"GENIE LOGICIEL",		
+				"GENIE LOGICIEL ET WEB",		
+				"GEOLOGIE GENERALE",		
+				"GEOMETRIE AFFINE ET EUCLIDIENNE",		
+				"GESTION DE PROJET",		
+				"GESTION D'ENTREPRISE",		
+				"GOUVERNANCE DES SI",		
+				"IMPLEMENTATION C",		
+				"INFOGRAPHIE",		
+				"INFORMATIQUE",		
+				"INFORMATIQUE DECISIONNELLE",		
+				"INFORMATIQUE DECISIONNELLE ET TECHNOLOGIE WEB",		
+				"INFORMATIQUE ET LANGUE",		
+				"INFORMATIQUE INDUSTRIELLE",		
+				"INFORMATIQUE 1",		
+				"INFORMATIQUE 2",		
+				"INFORMATIQUE 3",		
+				"INFORMATIQUE 4",		
+				"INITIATION AUX SYSTEMES",		
+				"INSTALLATION D'UN POSTE INFORMATIQUE",		
+				"INSTRUMENTATION ET MESURE",		
+				"INTERFACE H/M & WEB MULTIMEDIA",		
+				"INTERFACE HOMME MACHINE",		
+				"INTRODUCTION A L'INFORMATIQUE",		
+				"JAVA",		
+				"JAVA AVANCEE",		
+				"JAVA AVANCEE ET J2EE",		
+				"JAVA 2",		
+				"J2EE",		
+				"LANGAGE: C++",		
+				"LANGAGE C",		
+				"LANGUE",		
+				"LANGUE ET INFORMATIQUE",		
+				"LANGUE ET INFORMATIQUE 1",		
+				"LANGUE ET INFORMATIQUE 2",		
+				"LANGUE ET INFORMATIQUE 3",		
+				"LANGUE ET INFORMATIQUE 4",		
+				"LANGUE ET SYSTEME D'EXPLOITATION",		
+				"LANGUE 1",		
+				"LANGUE 1 ET INFORMATIQUE 2",		
+				"LANGUE 1 ET METHODOLOGIE",		
+				"LANGUE 2",		
+				"LANGUE 2 ET INFORMATIQUE 1",		
+				"LANGUE 3",		
+				"LANGUE 3 ET INFORMATIQUE 2",		
+				"LANGUE 4",		
+				"LANGUE 4 ET INFORMATIQUE 3",		
+				"LINUX",		
+				"LOGICIELS D'APPLICATIONS",		
+				"LOGISTIQUE",		
+				"SOFTWARE ET HARDWARE I",		
+				"SOFTWARE ET HARDWARE II",		
+				"MAGNETISME ",		
+				"MANAGEMENT D'ENTREPRISE",		
+				"MAPLE",		
+				"MATHEMATIQUES",		
+				"MATHEMATIQUES DISCRETES ET ANALYSE NUMERIQUE 3",		
+				"MATHEMATIQUES POUR INFORMATIQUE",		
+				"MATHEMATIQUES 2",		
+				"MECANIQUE",		
+				"MEMOIRE DE FIN D'ETUDES",		
+				"MERISE",		
+				"MESURE ET INTEGRATION",		
+				"METHODES AGILES",		
+				"METHODES NUMERIQUES",		
+				"METHODOLOGIE + INFOMATIQUE",		
+				"METHODOLOGIE",		
+				"MOBILITE ET GEOLOCALISATION",		
+				"MODELISATION ORIENTEE OBJET",		
+				"MOYENNE",		
+				"MULTIMEDIA",		
+				"NAN",		
+				"OPTIQUE",		
+				"ORACLE",		
+				"OS",		
+				"OUTILS DE PREVISION",		
+				"OUTILS DESIONNELLES",		
+				"OUTILS SCIENTIFIQUES",		
+				"OUVERTURE ET DYNAMIQUE DE GROUPE",		
+				"PFE",		
+				"PFE ET ENTREPRENARIAT",		
+				"PHYSIQUE I",		
+				"PHYSIQUE II",		
+				"PHYSIQUE 1",		
+				"PHYSIQUE 2",		
+				"PHYSIQUE 3",		
+				"PHYSIQUE 4",		
+				"PHYSIQUE 5",		
+				"PLSQL/XML",		
+				"POGRAMMATION C++",		
+				"POGRAMMATION STRUCTUREE C",		
+				"P.O.O",		
+				"P.O.O C++",		
+				"P.O.O JAVA",		
+				"PREPARATION A LA VIE ACTIVE",		
+				"PROBABILITES STATISTIQUES",		
+				"PROGRAMMATION ET CONCEPTION ORIENTEE OBJET",		
+				"PROGRAMMATION MOBILE",		
+				"PROGRAMMATION ORIENTEE OBJET",		
+				"PROGRAMMATION ORIENTEE OBJET AVANCEE",		
+				"PROGRAMMATION ORIENTEE OBJET ET STRUCTURES DE DONNEES",		
+				"PROJET DE FIN D'ETUDES",		
+				"RECHERCHE OPRERATIONNELLE",		
+				"RESEAUX",		
+				"RESEAUX ET WEB",		
+				"SECURITE",		
+				"EQUIVALENCE",		
+				"SERVEUR",		
+				"STAGE",		
+				"STATISTIQUES",		
+				"STRUCTURE DE DONNEES",		
+				"STRUCTURE ET FONCTIONNEMENT DES ORDINATEURS",		
+				"SYSTEME D'EXPLOITATION",		
+				"SYSTEME D'EXPLOITATION ET PROJET",		
+				"SYSTEME D'INFORMATION",		
+				"SYSTEME D'INFORMATION DECISIONNEL",		
+				"SYSTEME D'INFORMATION ET WEB",		
+				"SYSTEME D'INFORMATIONS ET BASES DE DONNEES",		
+				"SYSTEMES REPARTIES",		
+				"SYSTEMES D'EXPLOITATION ET RESEAUX",		
+				"SYSTEMES D'EXPLOITATION 1",		
+				"SYSTEMES D'EXPLOITATION 2",		
+				"TCP/IP",		
+				"T.E.C",		
+				"THEORIE DE GRAPHES",		
+				"THEORIE DE LANGUAGE ET COMPILATION",		
+				"THERMODYNAMIQUE",		
+				"TOPOLOGIE",		
+				"TRADUCTION DES LANGAGES",		
+				"TRAITEMENT DE SIGNAL",		
+				"TRAITEMENT D'IMAGES",		
+				"TRANSVERSALE 1",		
+				"UML",		
+				"UNIX",		
+				"VB.NET/LINUX",		
+				"WEB",		
+				"WEB / E-COMMERCE",		
+				"WEB AVANCE",		
+				"WEB ET COMPILATION",		
+				"WEB ET JAVA AVANCEE",		
+				"WEB ET MULTIMEDIA",		
+				"WEB POUR MOBILE",		
+				"120",		
+				"2012"		
+ };
+
+		double s = 0l;
+		String result = "";
+
+		for (String module : modules) {
+			double tempS = similarity(orgModule, module);
+			if (tempS > s) {
+				s = tempS;
+				result = module;
+			}
+		}
+
+		
+		return result;
+	}	
+	
+	public static String getModuleF(String module2) {
+    	String module=module2.toUpperCase();
+    	if(module.contains("120") || module.contains("2012")|| module.contains("NAN")||
+    			module.contains("EQUIVAL")|| module.contains("MOYENNE")||module.contains("CLASSES PREP"))
+    		return "AUTRE";
+    	
+    	if(module.contains("MEMOIRE") || module.contains("STAGE") || module.contains("PROJET DE FIN") || (module.contains("PFE") && !module.contains("PRENARIA")))
+    		return "PROJET DE FIN D'ETUDE";
+    	
+    	
+    	if(module.contains("PHYSIQUE II") )
+    		return "PHYSIQUE 2";
+    	
+    	if(module.contains("PHYSIQUE I") )
+    		return "PHYSIQUE 1";
+  
+    	if(module.contains("UML") ||module.contains("MERISE")||module.contains("MODELISATION ORIENTEE OBJET")||(module.contains("CONCEPTION")&&module.contains("OBJET")))
+    		return "CONCEPTION ORIENTE OBJET";
+    	if((module.contains("P.O.O") && !module.contains("AVANCE"))||module.contains("C++")||module.contains("JAVA"))
+    		return "PROGRAMMATION ORIENTEE OBJET";
+    	
+    	if(module.contains("ADMINISTRATION SERVEUR") )
+    		return "ADMINISTRATION RESEAUX";
+    	
+    	if(module.contains("LANGAGE C") ||module.contains("IMPLEMENTATION C"))
+    		return "ALGORITHMIQUE ET PROGRAMMATION";
+    	if(module.matches("ALGEBRE") ||module.matches("ALAGEBRE 1") )
+    		return "ALGEBRE 1";
+    	if(module.matches("ANALYSE") )
+    		return "ANALYSE 1";
+    	
+    	if(module.matches("ALGORITHMIQUE") )
+    		return "ALGORITHMIQUE 1";
+    	
+    	
+    	if(module.contains("APPLICATION CLIENT/SERVER")||module.contains("RESEAUX")||module.contains("TCP/IP")||module.contains("CYBER-OUTILS"))
+    			return "RESEAUX ET TELECOMMUNICATION";
+    	
+    	if(module.contains("C.O.O")||module.contains("CONCEPTION ORIENTE OBJET"))
+    			return "CONCEPTION ORIENTEE OBJET";
+    	
+    	
+    	if(module.contains("ATELIER GL"))
+    		return "GENIE LOGICIEL";
+    	if(module.contains("CIRCUITS LOGIQUES"))
+    		return "ARCHITECTURE DES ORDINATEURS";
+    	if(module.contains("ARABE")||module.matches("LANGUE"))
+    		return "LANGUE 1";
+    	if(module.matches("ENVIRONNEMENT ECONOMIQUE") )
+    		return "ENVIRONNEMENT ECONOMIQUE 1";
+    	return module;
+	}
+
+	
+}
+
+
+
+

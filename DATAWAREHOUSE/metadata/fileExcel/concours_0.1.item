@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:TalendMetadata="http://www.talend.org/metadata/connection/2010" xmlns:orgomg.cwm.resource.record="http:///orgomg/cwm/resource/record.ecore">
+  <TalendMetadata:FileExcelConnection xmi:id="_2EGh4LCPEeWYF7P0yp1ueA" name="concours" dataPackage="_2EGh4bCPEeWYF7P0yp1ueA" Server="Localhost 127.0.0.1" FilePath="/media/imad/D/Talend-Tools-Studio-20150908_1633-V6.0.1/workspace/DW2/files/concours.xls" Encoding="UTF-8" UseHeader="true" HeaderValue="1" FirstLineCaption="true" SheetName="Sheet1" firstColumn="1" thousandSeparator="','" decimalSeparator="'.'" sheetList="Sheet1:w&#xA;">
+    <sheetColumns>A</sheetColumns>
+    <sheetColumns>B</sheetColumns>
+  </TalendMetadata:FileExcelConnection>
+  <orgomg.cwm.resource.record:RecordFile xmi:id="_2EGh4bCPEeWYF7P0yp1ueA" name="default" dataManager="_2EGh4LCPEeWYF7P0yp1ueA">
+    <ownedElement xsi:type="TalendMetadata:MetadataTable" xmi:id="_2EGh4rCPEeWYF7P0yp1ueA" id="_rQE-oLCPEeWYF7P0yp1ueA" label="metadata">
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_2EGh47CPEeWYF7P0yp1ueA" label="id" length="1" talendType="id_Integer" pattern="&quot;dd-MM-yyyy&quot;"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_2EGh5LCPEeWYF7P0yp1ueA" label="epreuve" length="200" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;"/>
+    </ownedElement>
+  </orgomg.cwm.resource.record:RecordFile>
+</xmi:XMI>

@@ -1,0 +1,55 @@
+package routines;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.Locale;
+
+public class Clean {
+
+
+public static String fixe_boursier (String s){
+	if(s==null)
+		return "NON";
+	String S =s.toUpperCase();
+	if(S.contains("OUI"))
+		return "OUI";
+	if(S.contains("BOURS"))
+		return "OUI";
+	if(S.contains("LICENCE"))
+		return "OUI";
+	
+	
+	
+	
+	return "NON";
+}
+
+public static Date fixe_ddn(String dateNaissance) {
+	Locale l = new Locale("fr");
+
+	List<SimpleDateFormat> knownPatterns = new ArrayList<SimpleDateFormat>();
+
+	knownPatterns.add(new SimpleDateFormat("dd/MMMM/yyyy", l));
+	knownPatterns.add(new SimpleDateFormat("d/MMMM/yyyy", l));
+	knownPatterns.add(new SimpleDateFormat("d/mm/yyyy", l));
+	knownPatterns.add(new SimpleDateFormat("dd/mm/yyyy", l));
+	knownPatterns.add(new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy"));
+	knownPatterns.add(new SimpleDateFormat("yyyy-mm-dd HH:mm:ss"));
+
+	for (SimpleDateFormat pattern : knownPatterns) {
+		try {
+			Date d = new Date(pattern.parse(dateNaissance).getTime());
+			return d;
+
+		} catch (ParseException pe) {
+		}
+	}
+
+	return null;
+}
+
+}
+
